@@ -1,0 +1,74 @@
+<!-- This template can easily be edited (if you know HTML) to make your spread look exactly like you want. -->
+<!-- You may place up to twenty cards in this template. -->
+<!-- Some examples of what you can do are below. -->
+<!-- place <%custom1%> where you want the Name input from the calling form to appear -->
+<!-- place <%custom2%> where you want the Question input from the calling form to appear -->
+<!-- place <%object1%><%cardimage%> where you want your first card's image path to be displayed  -->
+<!-- place <%object1%><%cardname%><BR> where you want your first card's name to be displayed  -->
+<!-- place <%object2%><%cardimage%> where you want your second card's image path to be displayed  -->
+<!-- Note: the data returned by the tarot.cgi script is contained in the deck.cgi text database file! It can be modified by you. -->
+<!-- Note: the tarot fields available in the deck.cgi text database are:  -->
+<!-- <%cardimage%> the url path to the image of the selected card (eg: /tarot/images/cardimagesrev/cups03.jpg might be returned by the tarot.cgi script to replace all instances of <%card1%><%cardimage%> in this spreadtemplate.html file)-->
+<!-- <%cardblurb%> the text reading for the selected card (eg: "-Achievement and abundance are headed your way <%Name%>." might be returned by the tarot.cgi script to replace all instances of <%card1%><%cardblurb%> in this spreadtemplate.html file) -->
+<!-- <%cardname%><BR> the text name of the selected card (eg: "Three of Cups" might be returned by the tarot.cgi script to replace all instances of <%card1%><%cardname%><BR> in this spreadtemplate.html file) -->
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>3 Card Tarot Reading</TITLE> 
+  </HEAD> 
+  <BODY><%header%>
+	 <TABLE WIDTH="100%"> 
+		<TR VALIGN="TOP"> 
+		  <TD WIDTH="33%" VALIGN="top" ALIGN="CENTER"> <A HREF="#past">Past
+			 Card<BR><BR><IMG NAME="pic1" ALT="Past Card"
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A> </TD> 
+		  <TD WIDTH="33%" VALIGN="top" ALIGN="CENTER"> <A HREF="#present">Present
+			 Card<BR><BR> <IMG NAME="pic2" ALT="Present Card"
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></TD> 
+		  <TD WIDTH="33%" VALIGN="top" ALIGN="CENTER"> <A HREF="#future">Future
+			 Card<BR><BR> <IMG NAME="pic3" ALT="Future Card"
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></TD> 
+		</TR> 
+	 </TABLE> 
+	 <P>&nbsp;</P> 
+	 <DIV><A NAME="past"></A></DIV> 
+	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
+		<TR> 
+		  <TD ALIGN="CENTER" CLASS="facecards">Past Card<BR><BR><IMG NAME="pic1"
+			 ALT="Past Card" SRC="<%site_url%><%object1%><%objectimage%>"
+			 CLASS="facecards"><BR></TD> 
+		  <TD ALIGN="CENTER" VALIGN="TOP"> 
+			 <DIV ID="blurb1" CLASS="card1"><%object1%><%objectname%><BR><BR>
+<%object1%><%objectblurb%>
+			 </DIV></TD> 
+		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
+		</TR> 
+	 </TABLE><HR> 
+	 <DIV><A NAME="present"></A></DIV> 
+	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
+		<TR> 
+		  <TD ALIGN="CENTER" CLASS="facecards">Present Card<BR><BR><IMG
+			 NAME="pic2" ALT="Present Card" SRC="<%site_url%><%object2%><%objectimage%>"
+			 CLASS="facecards"><BR></TD> 
+		  <TD ALIGN="CENTER" VALIGN="TOP"> 
+			 <DIV ID="blurb2">
+<%object2%><%objectname%><BR><BR><%object2%><%objectblurb%>
+			 </DIV> </TD> 
+		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top"> Top</A></TD> 
+		</TR> 
+	 </TABLE> <HR> 
+	 <DIV><A NAME="future"></A></DIV> 
+	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
+		<TR> 
+		  <TD ALIGN="CENTER" CLASS="facecards">Future Card<BR><BR>
+			 <IMG NAME="pic3" ALT="Future Card" SRC="<%site_url%><%object3%><%objectimage%>"
+			 CLASS="facecards"><BR></TD> 
+		  <TD ALIGN="CENTER" VALIGN="TOP"> 
+			 <DIV ID="blurb3"><%object3%><%objectname%><BR> <BR>
+<%object3%><%objectblurb%>
+			 </DIV> </TD> 
+		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
+		</TR> 
+	 </TABLE><%footer%>
+  </BODY>
+</HTML>

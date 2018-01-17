@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>Free Tarot Card Readings - Emogic.com</TITLE><LINK REL="STYLESHEET"
+	 HREF="tarot.css"> 
+  </HEAD> 
+  <BODY> <SCRIPT SRC="cookie.js"></SCRIPT> 
+	 <TABLE CELLPADDING="10" CELLSPACING="0"
+	  STYLE="background-image: url(images/main.jpg); background-repeat: no-repeat; background-position: center center"
+	  WIDTH="500" ALIGN="CENTER"> 
+		<TR> 
+		  <TD VALIGN="TOP"> 
+			 <TABLE CELLPADDING="0" CELLSPACING="0" ALIGN="CENTER"> 
+				<TR> 
+				  <TD ALIGN="CENTER"> 
+					 <P><FONT FACE="Comic Sans MS">Free Tarot Card
+						readings</FONT></P><!-- change ACTION to point to your tarot.cgi script -->
+					 <FORM NAME="TarotForm"
+					  ACTION="https://www.emogic.com//cgi/tarot/tarot.cgi" METHOD="get"> 
+						<P><INPUT TYPE="HIDDEN" NAME="vars"
+						  VALUE="core_vars.cgi"></P><!--					  
+Switch to this one for PayPal readings
+<FORM NAME="TarotForm" ACTION="/cgi/tarot/pre_paypal.cgi" METHOD="post">
+-->
+<!-- Add additional path to spreads that you created in the option dropdowns below!-->
+						<P>Spread: 
+						  <SELECT NAME="template" SIZE="1">
+							 <OPTION VALUE="three_card_mobile"
+							  SELECTED="SELECTED">Three Card Mobile:Not for email</OPTION>
+						  </SELECT></P> 
+<!-- Add additional path to decks that you created in the option dropdowns below!-->
+						<P>Reading Style: 
+						  <SELECT NAME="database" SIZE="1"> 
+							 <OPTION VALUE="emogic"
+							  SELECTED="SELECTED">Emogic's</OPTION> 
+							 <OPTION VALUE="leila">Leila's</OPTION> 
+						  </SELECT></P> 
+						<P>Your First Name:<BR><INPUT TYPE="TEXT"
+						  NAME="custom1" SIZE="25"></P> 
+						<P>Your Question:<BR><INPUT TYPE="TEXT" NAME="custom2"
+						  SIZE="55"></P>
+<!-- This Email input is only required if you want the option to email Tarot readings. Remove if desired.-->
+						<P>Your Email: (not required)<BR>
+						  <INPUT TYPE="TEXT" NAME="email" SIZE="55"></P> 
+						<P><INPUT TYPE="SUBMIT" NAME="Submit1"
+						  VALUE="Get Tarot Reading"
+						  ONCLICK="var forever=new Date('October 17, 2030 03:24:00');setCookie('custom1', document.TarotForm.custom1.value , forever , '', '', '');setCookie('custom2', document.TarotForm.custom2.value , forever , '', '', '');setCookie('email', document.TarotForm.email.value , forever , '', '', '');setCookie('template', document.TarotForm.template.value , forever , '', '', '');setCookie('database', document.TarotForm.database.value , forever , '', '', '');"></P></FORM>
+					 
+					 <P><FONT COLOR="#CC0000" SIZE="+1">NEW: A spread that centers
+						on YOUR concerns!</FONT></P> 
+					 <P><FONT COLOR="#CC0000" SIZE="+1">Try it <A
+						HREF="custom.html">here</A></FONT></P> </TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="CENTER"> </TD> 
+				</TR> 
+			 </TABLE></TD> 
+		</TR> 
+	 </TABLE> <SCRIPT>
+document.TarotForm.custom1.value = getCookie('custom1') || '';
+document.TarotForm.custom2.value = getCookie('custom2') || '';
+document.TarotForm.email.value = getCookie('email') || '';
+document.TarotForm.template.value = getCookie('template') || 'three_card';
+document.TarotForm.database.value = getCookie('database') || 'emogic';
+</SCRIPT> 
+
+<!--FB share start
+<style>
+.facebook_button {
+    display: inline-block;
+
+    background: #627aac;
+
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+
+    height: 20px;
+
+    padding-right: 7px;
+    padding-left: 7px;
+
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 20px;
+
+    cursor: pointer;
+
+}
+</style>
+	 <DIV ID="fb-root"></DIV> <SCRIPT>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=10322510778&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function vp()
+{
+var tt = {
+    method: 'share',
+    href: "https://www.emogic.com/",
+  };
+tt.href = window.location.href;
+
+ FB.ui(
+  tt ,
+  function(response) {
+    if (response && !response.error_code) {
+      alert('Posting completed.');
+    } else {
+      alert('Error while posting.');
+    }
+  }
+        );
+};
+</SCRIPT>
+
+<CENTER><div class="fb-like" data-href="https://apps.facebook.com/emogicstarotreadings/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+<div class="facebook_button"  ONCLICK="window.open('https://apps.facebook.com/emogicstarotreadings/','_blank');" STYLE="clear: both">Play this on FB</div>
+<div class="facebook_button"  ONCLICK="vp();">Share this page on FB</div>
+</CENTER>
+FB share end-->
+  </BODY>
+</HTML>

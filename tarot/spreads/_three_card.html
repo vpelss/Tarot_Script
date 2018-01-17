@@ -1,0 +1,95 @@
+<!-- This template can easily be edited (if you know HTML) to make your spread look exactly like you want. -->
+<!-- You may place up to twenty cards in this template. -->
+<!-- Some examples of what you can do are below. -->
+<!-- place <%Name%> where you want the Name input from the calling form to appear -->
+<!-- place <%Question%> where you want the Question input from the calling form to appear -->
+<!-- place <%object1%><%objectimage%> where you want your first card's image path to be displayed  -->
+<!-- place <%object1%><%objectname%> where you want your first card's name to be displayed  -->
+<!-- place <%object2%><%objectimage%> where you want your second card's image path to be displayed  -->
+<!-- Note: the data returned by the tarot.cgi script is contained in the deck.cgi text database file! It can be modified by you. -->
+<!-- Note: the tarot fields available in the deck.cgi text database are:  -->
+<!-- <%objectimage%> the url path to the image of the selected card (eg: /tarot/images/cardimagesrev/cups03.jpg might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectimage%> in this spreadtemplate.html file)-->
+<!-- <%objectblurb%> the text reading for the selected card (eg: "-Achievement and abundance are headed your way <%Name%>." might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectblurb%> in this spreadtemplate.html file) -->
+<!-- <%objectname%> the text name of the selected card (eg: "Three of Cups" might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectname%> in this spreadtemplate.html file) -->
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>3 Card Tarot Reading</TITLE> 
+  </HEAD> 
+  <BODY> 
+	 <P><A NAME="#"></A> <A NAME="#"></A> </P>
+	 <CENTER> 
+		<H2>Your reading <%custom1%></H2> 
+		<H2>Question: <%custom2%></H2> <SCRIPT>
+var count = 3;
+
+function pickacard() {
+if (count == 3){document.pic1.src='<??><??>';blurb1.style.visibility='visible';cardname1.style.visibility='visible';}
+if (count == 2){document.pic2.src='<??><??>';blurb2.style.visibility='visible';cardname2.style.visibility='visible';}
+if (count == 1){document.pic3.src='<??><??>';blurb3.style.visibility='visible';cardname3.style.visibility='visible';}
+count = count - 1;
+}
+
+</SCRIPT> <A HREF="#"><IMG
+		SRC="../../tarot/images/carddeck.jpg" BORDER="0" ALT="Card Deck" WIDTH="400"
+		HEIGHT="80" ONCLICK="pickacard();"></A><BR>Click on deck to pick a card or
+		click on card position below. 
+		<TABLE ALIGN="center" WIDTH="85%" CELLPADDING="5"> 
+		  <TR> 
+			 <TD WIDTH="33%" VALIGN="top"> 
+				<P>Past Card<BR> </P>
+				<DIV ID="cardname1">
+<%object1%><%objectname%>
+				</DIV> <SCRIPT>
+cardname1.style.visibility='hidden';
+</SCRIPT> <BR><IMG NAME="pic1" ALT="Past Card"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic1.src='<%object1%><%objectimage%>';blurb1.style.visibility='visible';cardname1.style.visibility='visible';"
+				WIDTH="150" HEIGHT="254"><BR> 
+				<DIV ID="blurb1">
+<%object1%><%objectblurb%>
+				</DIV> <SCRIPT>
+blurb1.style.visibility='hidden';
+</SCRIPT> </TD> 
+			 <TD WIDTH="33%" VALIGN="top"> 
+				<P>Present Card<BR> </P>
+				<DIV ID="cardname2">
+<%object2%><%objectname%>
+				</DIV> <SCRIPT>
+cardname2.style.visibility='hidden';
+</SCRIPT> <BR><IMG NAME="pic2" ALT="Present Card"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic2.src='<%object2%><%objectimage%>';blurb2.style.visibility='visible';cardname2.style.visibility='visible';"
+				WIDTH="150" HEIGHT="254"><BR> 
+				<DIV ID="blurb2">
+<%object2%><%objectblurb%>
+				</DIV> <SCRIPT>
+blurb2.style.visibility='hidden';
+</SCRIPT> </TD> 
+			 <TD WIDTH="33%" VALIGN="top"> 
+				<P>Future Card<BR> </P>
+				<DIV ID="cardname3">
+<%object3%><%objectname%>
+				</DIV> <SCRIPT>
+cardname3.style.visibility='hidden';
+</SCRIPT> <BR><IMG NAME="pic3" ALT="Future Card"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic3.src='<%object3%><%objectimage%>';blurb3.style.visibility='visible';cardname3.style.visibility='visible';"
+				WIDTH="150" HEIGHT="254"><BR> 
+				<DIV ID="blurb3">
+<%object3%><%objectblurb%>
+				</DIV> <SCRIPT>
+blurb3.style.visibility='hidden';
+</SCRIPT> </TD> 
+		  </TR> 
+		</TABLE> 
+		<P><A HREF="http://www.somewhereincanada.com/playground/tarot/howto.html"
+		  TARGET="_blank">How do I read Tarot cards?</A></P>
+		<%footer%> <A HREF="javascript:window.close()">Close this Window</A>
+		</CENTER> <SCRIPT>
+//set cookie so there is one reading for 24 hours for each name, question, deck, and spread
+var when = new Date();
+when.setTime (when.getTime() + (24 * 60 * 60 * 1000)); // 24 hrs from now 
+setCookie("<??><??><??><??>", "<??>", when);
+</SCRIPT> </BODY>
+</HTML>

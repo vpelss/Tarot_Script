@@ -1,0 +1,288 @@
+The purchaser agrees to install this script on one domain (www.yoursite.com) only. If you wish to install it on another domain, you must purchase another copy/license.
+
+Thank you for purchasing our tarot script. As you will see, it is the most versatile script of it's kind.
+You can make your readings as simple or detailed as you wish.
+Our database is so versatile, that you can use it for ANY type of reading. You could actually use it to do rune readings if desired.
+
+With the Tarot script you can create an unlimited number of spreads. The spreads can be modified to suit the look of your site just by editing an html template.
+
+Our Tarot script comes with 4 spreads to start you off! Celtic Cross, Golden Dawn, Relationship, and Three Card.
+
+There are dotgo****.html templates to be used with the dotgo.com services. There is also an example index.cmrl file as an example. Visit dotgo.com for support with their services. 
+
+The Tarot database is text based and modifiable. This allows you to change card descriptions and point to other card images easily.
+
+Our Tarot script will allow you to show Tarot readings instantly at your web site, or to send the Tarot reading to your visitors by Email, or both!
+
+Add on modules are available. (purchased separately)
+
+delay_email.cgi will allow you to delay the email readings by any time desired. This can make it seem like a person actually doing the reading.
+
+delay_email.cgi is run by a cron job. So your web service provider must support and allow this.
+
+paypal.cgi allows you to charge for the script's Tarot readings. Once payment has been verified by Paypal your script will email a reading to the customer.
+
+IMPORTANT: It is fully expected that people who buy the script will modify the templates to suit their needs. Ads and the like are in the templates as examples of what you might do. You can add or remove anything from the templates.
+
+-----------------------
+Automated installer script
+-----------------------
+
+install.cgi script is designed to check your servers settings and assist you in quickly setting up the Tarot script. Be aware however, that all web hosting servers are not created equal. Install.cgi is provided as an alternate means of installation. The recommended method is farther down in these instructions.
+
+Copy the entire contents of the folder Tarot_Script up to your web hosts cgi or cgi-bin directory using an ftp program that can discern which files should be uploaded as ASCII or binary. Then set the permission on install.cgi to 755 or equivalent for your web host. Next run http://www.yoursite.com/cgi/Tarot_Script/install.cgi from your web browser. Fill in the missing data and install.
+
+Use install.cgi cautiously. If unsure, use the install instructions below.
+
+-----------------------
+Introduction
+-----------------------
+
+There are six files required for the tarot script to operate.
+
+1. tarot.cgi + core.cgi - the script itself which should not need to be modified.
+
+2. /tarot/databases/XXXX.cgi - a text database of your cards in the deck for ALL the spreads. You will add new files as you add new spreads. There should normally be only one deck.cgi file but depending on complexity, you may want more. It's extension is ".cgi" only for security reasons. It is not a script itself.
+
+3. /tarot/spreads/XXXX.html - a template of how your spread reading will look. You can modify this to change the spread look and add spread cards (By using tokens. We will elaborate later.) You will need a different spreadtemplate.html file for each type of spread you wish to display to your visitors.
+
+4. index.html - The first page your visitors will see. This file asks for the visitors name and a question, after which, it runs tarot.cgi and returns the spread results. You can modify it to look the way you want.
+
+5. core_vars.cgi - Variables used for by tarot.cgi
+
+-----------------------
+Script operation:
+-----------------------
+
+The visitor sees index.html first. They enter their name and question, and possibly email address. After clicking on the submit button, index.html sends the querents name, question, location of core_vars.cgi, location of the spread and card database files, and the current time to the tarot.cgi script. The tarot.cgi script opens the deck and shuffles the card database and chooses the cards. The script then opens the spread template (/tarot/spreads/) and places the cards on the spread template then sends the result to your visitor.
+
+The script uses cookies allowing only one reading per day for each Name/Question/spread/database combination. If you ask a different question, you will get a different reading. If you ask the same question, the same reading will show up for that day. The same applies if you change the name, spread, or database.
+
+-----------------------
+Quick Script Installation:
+-----------------------
+
+1. Edit the tarot.cgi to make sure the path to perl is correct for your web host server, i.e.,
+#!/usr/bin/perl
+***Warning***: Ensure that your text editor you use does not modify line returns in any way and that 'word wrap' is off!
+
+2. modify the first part of core_vars.cgi to suit your server's settings.
+
+3. Upload the contents of the 'cgi' directory to your server in ASCII format.
+Note, your server may require 'cgi-bin'.
+
+The directory structure and permissions should look similar to:
+
+755 /cgi/tarot/ 
+755 /cgi/tarot/tarot.cgi
+755 /cgi/tarot/core.cgi
+755 /cgi/tarot/core_vars.cgi
+777 /cgi/tarot/data/
+777 /cgi/tarot/data/
+777 /cgi/tarot/data/email_archive
+777 /cgi/tarot/data/email_delay
+777 /cgi/tarot/data/question_archive
+777 /cgi/tarot/data/txn_id
+
+Note: Your server may require different permissions than those shown. Contact your server provider if you are unsure.
+
+4. Edit the index.html, custom.html and Paypal.html files in the /tarot/ directory.
+
+You should only need to edit:
+<FORM NAME="TarotForm" ACTION="/cgi/tarot/tarot.cgi" TARGET="_blank"> 
+to reflect your cgi directory.
+If your cgi dirctory is cgi-bin use:
+<FORM NAME="TarotForm" ACTION="/cgi-bin/tarot/tarot.cgi" TARGET="_blank">
+default is set to cgi
+
+5. Modify the deck.cgi files if desired (see below). The default should be just fine for now.
+
+6. Modify /tarot/spreads/ files if desired (see below). The default should be just fine for now.
+
+7. Upload the contents of the '/tarot/databases/' and '/tarot/spreads/' directories to your server in ASCII format.
+Upload the contents of the '/tarot/images/' directory to your server in BINARY format.
+
+The directory structure and permissions should look similar to:
+
+755 /tarot/databases/
+755 /tarot/images/
+755 /tarot/images/Rider_Waite/
+755 /tarot/images/Rider_Waite/normal/
+755 /tarot/images/Rider_Waite/reversed/
+755 /tarot/spreads/
+all files within these directories to 755
+
+Note: Your server may require different permissions than those shown. Contact your server provider if you are unsure.
+
+8. Direct your visitors to the index.html file. http://www.yoursite.com/tarot/
+
+9. At this point the script is fully functional with default settings. If you wish to modify it, see the instructions below.
+
+10. IMPORTANT!!! The /cgi/tarot/data/ directory logs tarot readings for administrative purposes. It is strongly suggested that you password protect or bloch this directory with an .htaccess file or equivilent.
+
+-----------------------------------------------------------
+1. Modifying files
+-----------------------------------------------------------
+
+File modifications:
+
+-----------------------------------------------------------
+***Modifying /tarot/index.html***
+-----------------------------------------------------------
+
+1) The action variable in the form to point to where you put tarot.cgi
+eg: ACTION="http://www.yoursite.com/cgi/tarot/tarot.cgi" TARGET="_blank"> 
+
+2) If required, you can modify the paths to your spread templates and deck databases in core_vars.cgi
+see:
+$templatepath{'three_card'} = "../../tarot/spreads/three_card.html";  
+$databasepath{'emogic'} = "../../tarot/databases/emogic.cgi";
+NOTE: The paths are relative to your tarot.cgi script or use full paths!
+
+example:
+<SELECT NAME="spread" SIZE="1"> 
+<OPTION VALUE="three_card"  SELECTED="SELECTED">Three Card</OPTION> 
+
+<SELECT NAME="deck" SIZE="1">
+<OPTION  VALUE="emogic" SELECTED="SELECTED">Emogic's</OPTION> 
+
+Note: This script uses cookies so the visitor gets only one reading per day per question. If the visitor has cookies disabled, they can still get a reading but it will be a different reading each and every time. I feel that this leaves an impression of Authority and Accuracy to the Tarot script.
+
+Tarot readings can be sent to an email address if the visitor supplies a valid email address. If you want this feature disabled, edit the core_vars.cgi file.
+
+-----------------------------------------------------------
+*Modifying /tarot/databases/ deck databases - Card Database*
+-----------------------------------------------------------
+
+Keep in mind that you only need to modify the decks if you wish to personalize them.
+
+The database is a text-delimited database. It's delimiter character is the pipe "|". Delimiters are simply characters that separate a record's fields.
+
+THE FIRST LINE MUST CONTAIN THE FIELD NAMES!
+By default:
+objectnumber|objectname|objectimage|objectblurb 
+
+You can add your own special fields in the database if required. For example, you could add a field for 'Card History' or 'Advanced Meanings' , etc. 
+You could even have a unique card description for each position in your spread. Your additional field names might then be: blurbpast|blurbpresent|blurbfuture
+
+Example of first two cards in my deck.cgi file:
+
+(Record 1)	1|Ace of Cups|/tarot/images/Rider_Waite/normal/cups01.jpg|-The start of love, joy and fruitfulness.<br>-Spirituality aids the material world.
+(Record 2)	1|Ace of Cups|/tarot/images/Rider_Waite/reversed/cups01.jpg|-The start of love, joy and fruitfulness.<br>-Spirituality aids the material world.
+(Record 3)	2|Two of Cups|/tarot/images/Rider_Waite/normal/cups02.jpg|-This card signifies balance and give and take <%Name%>.<br>-You may be entering a friendship with the opposite sex.
+(Record 4)	2|Two of Cups|/tarot/images/Rider_Waite/reversed/cups02.jpg|-This card signifies balance and give and take <%Name%>.<br>-You may be entering a friendship with the opposite sex.
+(Record 5)	3|Three of Cups|/tarot/images/Rider_Waite/normal/cups03.jpg|-Achievement and abundance are headed your way <%Name%>.
+(Record 6)	3|Three of Cups|/tarot/images/Rider_Waite/reversed/cups03.jpg|-Achievement and abundance are headed your way <%Name%>.
+(Record 7)	4|Four of Cups|/tarot/images/Rider_Waite/normal/cups04.jpg|-Life is at an apathetic standstill <%Name%>.<br>-Perhaps material things do not bring plerasure.
+(Record 8)	4|Four of Cups|/tarot/images/Rider_Waite/reversed/cups04.jpg|-Life is at an apathetic standstill <%Name%>.<br>-Perhaps material things do not bring pleasure.
+
+Fields explanations:
+
+1st Field: Card Number - Denotes the card. Note there can be duplicate cards numbers! Normally there should only be two, one for an upright card and one for an upside down card. For example, if you wish your text description for the upside down 'Ace of Cups' card to be different, just edit the text description for that card in Records 2 in the example above.
+In fact you might decide to have multiple card descriptions for each card to make your readings more interesting. To do that, you need only add a new record for that card. For example, to create an second 'Ace of Cups' card description you would add the following line to the database;
+
+1|Ace of Cups|/tarot/images/Rider_Waite/normal/cups01.jpg|-The start of love, joy and fruitfulness.<br>-Enter your new card description here.
+
+Important: ensure 'line wrap' is off in your text editor!
+
+2nd Field: The Name of the card.
+
+3rd Field: Image Location (URL) - this is the URL pointing to the card image on your server for the chosen card. To do a reverse card, make another card record with the same Card Number, but a different image URL.
+
+4th Field: Card Blurb - This is the write up for your card.
+
+Note: All blurbs (in fact any fields) can contain a <%custom1%> token.
+
+Where the <%custom1%> token appears the visitors name will appear. This gives it a personal touch! To do a reverse card, make another card record with the same Card Number, but a different blurb for a reversed card.
+
+-----------------------------------------------------------
+***Modifying /tarot/spreads/header.html spread and /tarot/spreads/footer.html templates***
+-----------------------------------------------------------
+
+/tarot/spreads/header.html spread and /tarot/spreads/footer.html
+are added to each reading page at the top and bottom.
+This makes it easier to modify your all page headers and footers at once.
+If you require individual headers and footers, just use blank header.html and footer.html files and modify each spread individualy.
+All token remplacements work in the  header.html and footer.html files
+
+-----------------------------------------------------------
+***Modifying /tarot/spreads/ spread templates***
+-----------------------------------------------------------
+
+The spread templates determines the spread layout and design of your reading. You can think of this file as the pattern in which you deal the cards onto the table.
+
+To modify or create the spread template, design a web page in HTML and place <%custom1%> and card tokens where you want them to appear. The users name will appear where the <%Name%> token is. Place<%object1%><%object2%><%object3%> tokens where you want the card data to appear on your page as per the instructions below.<%object1%> is the first card turned over.<%object2%> is the second card turned over, etc...
+
+Place<%object1%><%objectname%> where you want the first card name to display in the spreadtemplate.html file.
+Place<%object1%><%objectimage%> where you want the first card image to display in the spreadtemplate.html file.
+Place<%object1%><%objectblurb%> where you want the first card description   to display in the spreadtemplate.html file.
+
+Place <%custom1%> where you want the visitors name to display in the spreadtemplate.html file.
+Place <%custom2%> where you want the visitors question to display in the spreadtemplate.html file.
+
+To add the other cards do the same as above, but use<%object2%> ,<%object3%>, etc up to<%object50%>
+
+If you created new data fields in your deck database you can place in in the spread template by<%object1%><%field name%> , <%object2%><%field name%> , etc
+
+-----------------------------------------------------------
+Fancy stuff: Creating unique card descriptions for different placements in the spread 
+-----------------------------------------------------------
+
+To do this you must first add a new field in your database(s). To do this in the emogic.cgi database for example, open it in notepad (line wrap off) and edit the first line:
+objectnumber|objectname|objectimage|objectblurb  
+to look like:
+objectnumber|objectname|objectimage|objectblurb|objectblurbforposition2|objectblurbforposition3
+
+You will now need to add a new record for add the lines.
+For example:
+1|Ace of Cups|/tarot/images/Rider_Waite/normal/cups01.jpg|The start of love, joy and fruitfulness.<br>Spirituality aids the material world.
+would now be :
+1|Ace of Cups|/tarot/images/Rider_Waite/normal/cups01.jpg|The start of love, joy and fruitfulness.<br>Spirituality aids the material world.|MY DESCRIPTION FOR THE 2nd CARD DESCRIPTION GOES HERE|MY DESCRIPTION FOR THE 3rd CARD DESCRIPTION GOES HERE
+
+Now you must edit the spread template files to match.
+
+By default our three card spread comes with card blurb/description tags like the following:
+<%object1%><%objectblurb%>             <%object1%><%objectblurb%>             <%object3%><%objectblurb%>
+
+Since you have changed the emogic.cgi database with two new fields cardblurbforposition2 and cardblurbforposition2, and populated all the remaining lines with data to suit, your new tags in the three card spreads should look like the following:
+<%object1%><%objectblurb%>             <%object2%><%objectblurbforposition2%>             <%object3%><%objectblurbforposition3%>
+
+The first card that is selected will use the data found in the objectblurb field, the second card selected will use the data found in the objectblurbforposition2, and the third card selected will use the data found in the objectblurbforposition3.
+
+-----------------------------------------------------------
+Creating your own spreads and decks 
+-----------------------------------------------------------
+
+Our script allows you to quickly and easily generate an unlimited number of spreads.
+
+Simply copy and rename an existing spread template html file in /tarot/spreads/. Rename it and modify it as desired.
+
+Note that you can also create multiple /tarot/databases/ deck databases with unique card images or card descriptions.
+
+-----------------------------------------------------------
+Full integration with CMS - potential security risk - be careful 
+-----------------------------------------------------------
+
+It be integrated into content management systems such as drupal if your host and CMS allows php code and file() calls.
+
+Notes:
+1. potential security risk - be careful
+2. Tarot CSS can conflict with CMS CSS
+
+Sample code (not any security built in):
+
+Have a CMS based tarot form page call a CMS page (say tarotreading) with the usual variables. eg:
+/tarotreading/?vars=core_vars.cgi&template=three_card&database=emogic&custom1=&custom2=&email=
+
+Then add to the tarotreading CMS page:
+<?php
+$template  = $_GET["template"];
+$database = $_GET["database"];
+$custom1 = $_GET["custom1"];
+$custom2 = $_GET["custom1"];
+$email = $_GET["email"];
+$str = implode('',file( "http://www.emogic.com/cgi/tarot/tarot.cgi?template=$template&database=$database&vars=core_vars.cgi&cusom1=$custom1&custom2=$custom2&email=$email" ));
+#remove: http://www.emogic.com/tarot/tarot.css
+$str = str_replace  ( "http://www.emogic.com/tarot/tarot.css"  , ""  ,  $str  );
+print( $str );
+?>

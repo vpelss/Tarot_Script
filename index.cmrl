@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmrl xmlns:dotgo="http://dotgo.com/cmrl/1.0" account='urcq0-bg6sp-l3f79-iz0s0'>
+
+<match pattern="">
+ <message>
+   	<content>
+Welcome to emogic.com <get name="custom1"/><br/>
+Concentrate on an issue then Reply # for result<br/>
+<a query="emogic love"/> Love<br/>
+<a query="emogic career"/> Career<br/>
+<a query="emogic general"/> General<br/>
+<a query="emogic setname"/> Set Name
+	</content>
+ </message>
+</match>
+
+<match pattern="love">
+<engine href="http://www.emogic.com/cgi/tarot/tarot.cgi?vars=core_vars.cgi&amp;template=dotgo&amp;database=emogic&amp;custom20=Love"/>
+</match>
+
+<match pattern="career">
+ <engine href="http://www.emogic.com/cgi/tarot/tarot.cgi?vars=core_vars.cgi&amp;template=dotgo&amp;database=emogic&amp;custom20=Career"/>
+</match>
+
+<match pattern="general">
+<engine href="http://www.emogic.com/cgi/tarot/tarot.cgi?vars=core_vars.cgi&amp;template=dotgo&amp;database=emogic&amp;custom20=General"/>
+</match>
+
+<match pattern="Set Name">
+  <message>
+    <content>Reply with your first name</content>
+    <input name="custom1">
+      <message>
+        <content>
+Thanks <get name="custom1"/><br/>
+Concentrate on an issue then Reply # for result<br/>
+<a query="emogic love"/> Love<br/>
+<a query="emogic career"/> Career<br/>
+<a query="emogic general"/> General<br/>
+<a query="emogic setname"/> Set Name
+	</content>
+      </message>
+    </input>
+  </message>
+</match>
+
+</cmrl>

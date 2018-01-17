@@ -1,0 +1,165 @@
+<!-- This template can easily be edited (if you know HTML) to make your spread look exactly like you want. -->
+<!-- You may place up to twenty cards in this template. -->
+<!-- Some examples of what you can do are below. -->
+<!-- place <%Name%> where you want the Name input from the calling form to appear -->
+<!-- place <%Question%> where you want the Question input from the calling form to appear -->
+<!-- place <%object1%><%objectimage%> where you want your first card's image path to be displayed  -->
+<!-- place <%object1%><%objectname%> where you want your first card's name to be displayed  -->
+<!-- place <%object2%><%objectimage%> where you want your second card's image path to be displayed  -->
+<!-- Note: the data returned by the tarot.cgi script is contained in the deck.cgi text database file! It can be modified by you. -->
+<!-- Note: the tarot fields available in the deck.cgi text database are:  -->
+<!-- <%objectimage%> the url path to the image of the selected card (eg: /tarot/cardimagesrev/cups03.jpg might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectimage%> in this spreadtemplate.html file)-->
+<!-- <%objectblurb%> the text reading for the selected card (eg: "-Achievement and abundance are headed your way <%Name%>." might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectblurb%> in this spreadtemplate.html file) -->
+<!-- <%objectname%> the text name of the selected card (eg: "Three of Cups" might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectname%> in this spreadtemplate.html file) -->
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>Relationship Tarot Reading</TITLE> 
+  </HEAD> 
+  <BODY>  <a name="#"></a>
+	 <TABLE WIDTH="760" BORDER="0" CELLPADDING="0" CELLSPACING="0"
+	 > 
+		<TR> 
+		  <TD CLASS="navigation_font"> 
+			 <H3>Your reading: <%custom1%></H3> <BR> 
+			 <H3>Question: <%custom2%>
+			 </H3> 
+			 <H3>&nbsp;</H3> 
+			 <DIV ALIGN="center"> <SCRIPT>
+var count = 1;
+
+function pickacard() {
+if (count == 1){document.pic1.src='<%object1%><%objectimage%>';blurb1.style.visibility='visible';cardname1.style.visibility='visible';}
+if (count == 2){document.pic2.src='<%object2%><%objectimage%>';blurb2.style.visibility='visible';cardname2.style.visibility='visible';}
+if (count == 3){document.pic3.src='<%object3%><%objectimage%>';blurb3.style.visibility='visible';cardname3.style.visibility='visible';}
+if (count == 4){document.pic4.src='<%object4%><%objectimage%>';blurb4.style.visibility='visible';cardname4.style.visibility='visible';}
+if (count == 5){document.pic5.src='<%object5%><%objectimage%>';blurb5.style.visibility='visible';cardname5.style.visibility='visible';}
+if (count == 6){document.pic6.src='<%object6%><%objectimage%>';blurb6.style.visibility='visible';cardname6.style.visibility='visible';}
+if (count == 7){document.pic7.src='<%object7%><%objectimage%>';blurb7.style.visibility='visible';cardname7.style.visibility='visible';}
+count = count + 1;
+}
+
+      </SCRIPT> <A HREF="#"><IMG
+				SRC="../../tarot/images/carddeck.jpg" BORDER="0" ALT="Card Deck" WIDTH="400"
+				HEIGHT="80" ONCLICK="pickacard();"></A> </DIV> 
+			 <H3 CLASS="directions">Click on deck to pick a card or click on card
+				position below.</H3> </TD> 
+		</TR> 
+	 </TABLE>
+	 <TABLE BORDER="BORDER" CELLPADDING="0" CELLSPACING="0">
+		<TR>
+		  <TD>&nbsp;</TD>
+		  <TD>Mutual goals<BR> 
+			 <DIV ID="cardname7" STYLE="visibility='hidden'">
+  <%object7%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic7" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic7.src='<%object7%><%objectimage%>';blurb7.style.visibility='visible';cardname1.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb7" STYLE="visibility='hidden'">
+  <%object7%><%objectblurb%>
+			 </DIV></TD>
+		  <TD>&nbsp;</TD>
+		</TR>
+		<TR>
+		  <TD>Their qualities<BR> 
+			 <DIV ID="cardname1" STYLE="visibility='hidden'">
+  <%object1%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic1" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic1.src='<%object1%><%objectimage%>';blurb1.style.visibility='visible';cardname1.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb1" STYLE="visibility='hidden'">
+  <%object1%><%objectblurb%>
+			 </DIV></TD>
+		  <TD>Connection<BR> 
+			 <DIV ID="cardname3" STYLE="visibility='hidden'">
+  <%object3%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic3" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic3.src='<%object3%><%objectimage%>';blurb3.style.visibility='visible';cardname3.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb3" STYLE="visibility='hidden'">
+  <%object3%><%objectblurb%>
+			 </DIV></TD>
+		  <TD>Your qualities<BR> 
+			 <DIV ID="cardname2" STYLE="visibility='hidden'">
+  <%object2%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic2" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic2.src='<%object2%><%objectimage%>';blurb2.style.visibility='visible';cardname2.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb2" STYLE="visibility='hidden'">
+  <%object2%><%objectblurb%>
+			 </DIV></TD>
+		</TR>
+		<TR>
+		  <TD VALIGN="BOTTOM" HEIGHT="400">What they bring to the
+			 relationship<BR> 
+			 <DIV ID="cardname5" STYLE="visibility=hidden">
+  <%object5%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic5" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic5.src='<%object5%><%objectimage%>';blurb5.style.visibility='visible';cardname5.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb5" STYLE="visibility=hidden">
+  <%object5%><%objectblurb%>
+			 </DIV></TD>
+		  <TD VALIGN="TOP">Common base<BR> 
+			 <DIV ID="cardname4" STYLE="visibility='hidden'">
+  <%object4%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic4" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic4.src='<%object4%><%objectimage%>';blurb4.style.visibility='visible';cardname4.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb4" STYLE="visibility='hidden'">
+  <%object4%><%objectblurb%>
+			 </DIV></TD>
+		  <TD VALIGN="BOTTOM">What you bring to the relationship<BR> 
+			 <DIV ID="cardname6" STYLE="visibility='hidden'">
+  <%object6%><%objectname%>
+			 </DIV> 
+			 <CENTER> <BR>
+				<IMG NAME="pic6" ALT="Past Card" ALIGN="middle"
+				SRC="../../tarot/images/back.jpg"
+				ONCLICK="document.pic6.src='<%object6%><%objectimage%>';blurb6.style.visibility='visible';cardname6.style.visibility='visible';"><BR>
+				</CENTER> 
+			 <DIV ID="blurb6" STYLE="visibility='hidden'">
+  <%object6%><%objectblurb%>
+			 </DIV></TD>
+		</TR>
+	 </TABLE> 
+<P><a href="http://www.somewhereincanada.com/playground/tarot/howto.html" target="_blank">How do I read Tarot cards?</a></P>
+		<P>For more examples of what is possible with this script, go to <a href="http://tarot.leila.ca" target="_blank">Tarot of Timeless Truth</a> and check out the many free tarot card readings!</P>
+		<P>PERL code Obfuscated by Emogic's <a href="http://www.emogic.com/software/" target="_blank">Perl Obfuscator</a></P>
+
+		<TABLE CELLPADDING="3" CELLSPACING="0">
+		  <TR>
+			 <TD ALIGN="CENTER"><B>This Script by:</B><BR><A HREF="http://www.emogic.com/scriptman/" TARGET="_blank"><IMG
+				SRC="/tarot/banner.gif" ALT="The ScriptMan" WIDTH="468" HEIGHT="60" BORDER="0"></A></TD>
+			 <TD><A HREF="http://www.emogic.com/scriptman/" TARGET="_blank"><IMG
+				SRC="/tarot/monk.gif" ALT="The ScriptMan" WIDTH="105" HEIGHT="104" BORDER="0"></A></TD>
+		  </TR>
+		</TABLE>
+		<P></P> <A HREF="javascript:window.close()">Close this Window</A> </CENTER>
+<SCRIPT>
+//set cookie so there is one reading for 24 hours for each name, question, deck, and spread
+var when = new Date();
+when.setTime (when.getTime() + (24 * 60 * 60 * 1000)); // 24 hrs from now 
+setCookie("<%custom1%><%custom2%><%templatepath%><%databasepath%>", "<%records%>", when);
+</SCRIPT> 
+
+ </BODY>
+</HTML>

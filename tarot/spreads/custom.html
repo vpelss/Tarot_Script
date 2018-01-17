@@ -1,0 +1,86 @@
+<!-- This template can easily be edited (if you know HTML) to make your spread look exactly like you want. -->
+<!-- You may place up to twenty cards in this template. -->
+<!-- Some examples of what you can do are below. -->
+<!-- place <%Name%> where you want the Name input from the calling form to appear -->
+<!-- place <%Question%> where you want the Question input from the calling form to appear -->
+<!-- place <%object1%><%objectimage%> where you want your first card's image path to be displayed  -->
+<!-- place <%object1%><%objectname%><BR> where you want your first card's name to be displayed  -->
+<!-- place <%object2%><%objectimage%> where you want your second card's image path to be displayed  -->
+<!-- Note: the data returned by the tarot.cgi script is contained in the deck.cgi text database file! It can be modified by you. -->
+<!-- Note: the tarot fields available in the deck.cgi text database are:  -->
+<!-- <%objectimage%> the url path to the image of the selected card (eg: /tarot/images/cardimagesrev/cups03.jpg might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectimage%> in this spreadtemplate.html file)-->
+<!-- <%objectblurb%> the text reading for the selected card (eg: "-Achievement and abundance are headed your way <%Name%>." might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectblurb%> in this spreadtemplate.html file) -->
+<!-- <%objectname%><BR> the text name of the selected card (eg: "Three of Cups" might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectname%><BR> in this spreadtemplate.html file) -->
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>3 Card Custom Tarot Reading</TITLE> 
+  </HEAD> 
+  <BODY> 
+  <%header%>
+	 <TABLE CELLPADDING="3" CELLSPACING="0" ALIGN="CENTER"> 
+		<TR> 
+		  <TD>&nbsp;</TD> 
+		  <TD><A HREF="#Concern1"><%custom41%><BR><BR><IMG NAME="pic1"
+			 ALT="Past Card" SRC="<%site_url%>/tarot/images/backsmall.jpg"
+			 WIDTH="50" HEIGHT="85"></A> </TD> 
+		  <TD>&nbsp;</TD> 
+		</TR> 
+		<TR> 
+		  <TD>&nbsp;</TD> 
+		  <TD><IMG SRC="<%site_url%>/tarot/images/eye.gif" ALT="Eye" WIDTH="50"
+			 HEIGHT="44" BORDER="0"></TD> 
+		  <TD>&nbsp;</TD> 
+		</TR> 
+		<TR> 
+		  <TD><A HREF="#Concern2"> <IMG NAME="pic2" ALT="Present Card"
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"><BR><BR><%custom42%></A></TD>
+		  
+		  <TD>&nbsp;</TD> 
+		  <TD><A HREF="#Concern3"> <IMG NAME="pic3" ALT="Future Card"
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"><BR><BR><%custom43%></A></TD>
+		  
+		</TR> 
+	 </TABLE> 
+	 <TABLE CELLPADDING="5" ALIGN="CENTER"> 
+		<TR> 
+		  <TD WIDTH="33%" VALIGN="top" ALIGN="CENTER"> </TD> 
+		  <TD WIDTH="33%" VALIGN="top" ALIGN="CENTER"> </TD> 
+		  <TD WIDTH="33%" VALIGN="top" ALIGN="CENTER"> </TD> 
+		</TR> 
+	 </TABLE> 
+	 <P>&nbsp;</P> 
+	 <TABLE CELLPADDING="10" CELLSPACING="0" WIDTH="100%"> 
+		<TR> 
+		  <TD><A NAME="Concern1"></A><%custom41%><BR><IMG NAME="pic1"
+			 ALT="Past Card" SRC="<%site_url%><%object1%><%objectimage%>"><BR> </TD> 
+		  <TD> 
+			 <DIV ID="blurb1" CLASS="card1"><%object1%><%objectname%><BR><BR>
+<%object1%><%objectblurb%>
+			 </DIV></TD> 
+		  <TD><A HREF="#top">Top of Page</A></TD> 
+		</TR> 
+		<TR> 
+		  <TD><A NAME="Concern2"></A><%custom42%><BR>
+			 <IMG NAME="pic2" ALT="Present Card"
+			 SRC="<%site_url%><%object2%><%objectimage%>"><BR> </TD> 
+		  <TD> 
+			 <DIV ID="blurb2">
+<%object2%><%objectname%><BR><BR><%object2%><%objectblurb%>
+			 </DIV></TD> 
+		  <TD><A HREF="#top">Top of Page</A></TD> 
+		</TR> 
+		<TR> 
+		  <TD><A NAME="Concern3"></A><%custom43%><BR>
+			 <IMG NAME="pic3" ALT="Future Card"
+			 SRC="<%site_url%><%object3%><%objectimage%>"><BR> </TD> 
+		  <TD> 
+			 <DIV ID="blurb3"><%object3%><%objectname%><BR> <BR>
+<%object3%><%objectblurb%>
+			 </DIV></TD> 
+		  <TD><A HREF="#top">Top of Page</A></TD> 
+		</TR> 
+	 </TABLE>
+	 <%footer%>
+  </BODY>
+</HTML>

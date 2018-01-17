@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE></TITLE> <STYLE TYPE="text/css">
+	 
+
+	 </STYLE> 
+  </HEAD> 
+  <BODY> 
+	 <DIV CLASS="circle" ID="test"><FONT SIZE="+4">&#9786;</FONT></DIV>
+	 <DIV CLASS="circle"><FONT SIZE="+4">&#9786;</FONT></DIV> 
+	 <DIV CLASS="circle"><FONT SIZE="+4">&#9786;</FONT></DIV> 
+	 <DIV CLASS="circle"><FONT SIZE="+4">&#9786;</FONT></DIV> 
+	 <DIV CLASS="circle"><FONT SIZE="+4">&#9786;</FONT></DIV> 
+     
+<SCRIPT>
+var numberOfItems = 5; //must have corresponding div and class
+var width = 100; //radius
+var height = 100; //radius
+var centerX = 100;
+var centerY = 100;
+var nextObjectAngle = new Array();
+var incrimentAngle;
+
+function circle(mode)
+{
+if (mode == 'initialize')
+    {
+    var steps = 360;
+    incrimentAngle = (2*Math.PI)/steps; //in radians
+ 
+    //initial poitions in circle
+    var offsetAngle = (2*Math.PI)/numberOfItems ;
+    for (var a = 0 ; a < numberOfItems ; a++)
+        {
+        nextObjectAngle[a] = offsetAngle * a;
+        var x = Math.cos(nextObjectAngle[a]) * width + centerX;   
+        var y = Math.sin(nextObjectAngle[a]) * height + centerY;
+        document.getElementsByClassName("circle")[a].style.position = 'absolute';
+        document.getElementsByClassName("circle")[a].style.left = x;
+        document.getElementsByClassName("circle")[a].style.top = y;
+        }
+     }
+else
+    {
+    for (var a = 0 ; a < numberOfItems ; a++)
+        {
+        nextObjectAngle[a] = nextObjectAngle[a] + incrimentAngle; //turn circle
+        var x = Math.cos(nextObjectAngle[a]) * width + centerX;   
+        var y = Math.sin(nextObjectAngle[a]) * height + centerY;
+        document.getElementsByClassName("circle")[a].style.left = x;
+        document.getElementsByClassName("circle")[a].style.top = y;
+        }
+    }
+setTimeout(circle, 50);
+}
+
+circle('initialize');
+  
+  </SCRIPT> </BODY>
+</HTML>

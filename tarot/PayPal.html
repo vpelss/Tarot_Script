@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>Free Tarot Card Readings - Emogic.com</TITLE><LINK REL="STYLESHEET"
+	 HREF="tarot.css"> 
+  </HEAD> 
+  <BODY> <SCRIPT SRC="cookie.js"></SCRIPT> 
+	 <TABLE CELLPADDING="10" CELLSPACING="0"
+	  STYLE="background-image: url(images/main.jpg); background-repeat: no-repeat; background-position: center center"
+	  WIDTH="500" ALIGN="CENTER"> 
+		<TR> 
+		  <TD VALIGN="TOP"> 
+			 <TABLE CELLPADDING="0" CELLSPACING="0" ALIGN="CENTER"> 
+				<TR> 
+				  <TD ALIGN="CENTER"> 
+					 <P><FONT FACE="Comic Sans MS">Free Tarot Card
+						readings</FONT></P><!-- change ACTION to point to your tarot.cgi script -->
+					 <FORM NAME="TarotForm"
+					  ACTION="https://www.sandbox.paypal.com/cgi-bin/webscr" METHOD="post"> 
+
+<!-- Add additional path to spreads that you created in the option dropdowns below!-->
+						<P>Spread: 
+						  <SELECT NAME="template" SIZE="1"> 
+							 <OPTION VALUE="three_card" SELECTED="SELECTED">Three Card
+								Card</OPTION> 
+							 <OPTION VALUE="relationship">Relationship</OPTION> 
+							 <OPTION VALUE="celtic_cross">Celtic Cross</OPTION> 
+							 <OPTION VALUE="golden_dawn">Golden Dawn</OPTION> 
+						  </SELECT></P> 
+<!-- Add additional path to decks that you created in the option dropdowns below!-->
+						<P>Reading Style: 
+						  <SELECT NAME="database" SIZE="1"> 
+							 <OPTION VALUE="emogic"
+							  SELECTED="SELECTED">Emogic's</OPTION> 
+							 <OPTION VALUE="leila">Leila's</OPTION> 
+						  </SELECT></P> 
+						<P>Your First Name:<BR><INPUT TYPE="TEXT"
+						  NAME="custom1" SIZE="25"></P> 
+						<P>Your Question:<BR><INPUT TYPE="TEXT" NAME="custom2"
+						  SIZE="55"></P>
+<!-- This Email input is only required if you want the option to email Tarot readings. Remove if desired.-->
+						<P>Your Email: (not required)<BR>
+						  <INPUT TYPE="TEXT" NAME="email" SIZE="55"></P> 
+						<P><INPUT TYPE="image" SRC="http://images.paypal.com/images/x-click-but6.gif"
+						  NAME="submit" ALT="Make payments with PayPal - it's fast, free and secure!">
+<!--Submit button.-->
+						  <INPUT TYPE="SUBMIT" NAME="Submit1"
+							VALUE="Get Tarot Reading"
+							ONCLICK="var forever=new Date('October 17, 2030 03:24:00');setCookie('custom1', document.TarotForm.custom1.value , forever , '', '', '');setCookie('custom2', document.TarotForm.custom2.value , forever , '', '', '');setCookie('email', document.TarotForm.email.value , forever , '', '', '');setCookie('template', document.TarotForm.template.value , forever , '', '', '');setCookie('database', document.TarotForm.database.value , forever , '', '', '');"></P>
+						<INPUT TYPE="hidden" NAME="amount" VALUE="2.00"> <!--The amount we are charging-->
+						<INPUT TYPE="hidden" NAME="cmd" VALUE="_ext-enter">
+						<INPUT TYPE="hidden" NAME="redirect_cmd" VALUE="_xclick">
+						<INPUT TYPE="hidden" NAME="business" VALUE="vince@vince.com"> <!--The email of the PayPal account we want to send the money too.-->
+						<INPUT TYPE="hidden" NAME="return"
+						 VALUE="https://www.emogic.com/tarot"> <!--This generates the final page after PayPal processing. Modify it to suit your installation!-->
+						<INPUT TYPE="hidden" NAME="item_name" VALUE="Tarot Reading">
+						<INPUT TYPE="hidden" NAME="notify_url"
+						 VALUE="https://www.emogic.com/cgi/tarot/paypal.cgi"> <!--This sends the Tarot reading to the visitor. Modify it to suit your installation!-->
+						<INPUT TYPE="hidden" NAME="mc_currency" VALUE="USD"> <!--The currancy type. Set to Canadian in this example. See PayPal.com-->
+						<INPUT TYPE="hidden" NAME="currency_code" VALUE="USD"> <!--The currancy type. Set to Canadian in this example. See PayPal.com-->
+						<INPUT TYPE="hidden" NAME="custom"
+						 VALUE="custom1=$variable{'custom1'}&custom2=$variable{'custom2'}&email=$variable{'email'}&databasepath=$variable{'databasepath'}&templatepath=$variable{'templatepath'}&vars=$variable{'vars'}$custombulk">
+						</FORM> 
+					 <P><FONT COLOR="yellow" SIZE="+1">NEW: A spread that centers on
+						YOUR concerns!</FONT></P> 
+					 <P><FONT COLOR="yellow" SIZE="+1">Try it <A
+						HREF="custom.html">here</A></FONT></P> 
+					 <P><FONT COLOR="yellow" SIZE="+1">One card at a time Spreads
+						<A HREF="ocaat.html">here</A></FONT></P> 
+					 <P><FONT COLOR="yellow" SIZE="+1">Spreads suitable for tablets
+						<A HREF="tablet.html">here</A></FONT></P> 
+					 <P><FONT COLOR="yellow" SIZE="+1">DotGo texting Tarot Reading
+						(type 'emogic' to get reading, then type prompts)
+						<A HREF="http://www.dotgo.com/Publishers/Resources/DOTGOSimulator/"
+						 TARGET="_blank">here</A></FONT></P> 
+					 <P></P> </TD> 
+				</TR> 
+				<TR> 
+				  <TD ALIGN="CENTER"> </TD> 
+				</TR> 
+			 </TABLE></TD> 
+		</TR> 
+	 </TABLE> <SCRIPT>
+document.TarotForm.custom1.value = getCookie('custom1') || '';
+document.TarotForm.custom2.value = getCookie('custom2') || '';
+document.TarotForm.email.value = getCookie('email') || '';
+document.TarotForm.template.value = getCookie('template') || 'three_card';
+document.TarotForm.database.value = getCookie('database') || 'emogic';
+</SCRIPT> </BODY>
+</HTML>
