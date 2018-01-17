@@ -1,0 +1,69 @@
+Thank you for purchasing our paypal.cgi add on for our Tarot script.
+It will allow you to automatically charge  for an email reading and sends it to your customers.
+It can be used in conjunction with delay_email.cgi thus simulating a reading by a person.
+
+First, ensure that your tarot.cgi script is set up and works without this script.
+
+If you are using delay_email.cgi, ensure it is working.
+
+This script uses Paypal's Instant Payment notification (IPN) system. You should be familiar with Paypal's Instant Payment notification (IPN). You can also use PayPal's Developers Sandbox system for trouble shooting purposes, but it is not required. See PayPal.com for that.
+
+Upload paypal.cgi and prepaypal.cgi in ASCII format to the same folder with tarot.cgi. Normally /cgi/tarot/
+Set permissions to 755. Some servers require different permissions. Contact your server support staff.
+
+Edit the following in pay_vars.cgi (most likely in /cgi/tarot/)
+
+$paypalsite should not need to be changed.
+$paypalsite = 'https://www.paypal.com/cgi-bin/webscr';
+
+$paypaladdress should be your PRIMARY Paypal Email address of the account where the money will be deposited.
+Notice there is a reverse slash before the at @ symbol. It MUST be included.
+$paypaladdress = 'vince\@vince.com';
+
+$payment_amount will force a minimum payment in dollars.
+$payment_amount = '2.00';
+This example will force a minimum payment of $2.00
+
+$paypal_only_password will either allow or deny free readings at your site.
+Set it to any password to block free readings. 
+*** DO NOT, REPEAT, DO NOT make it your PayPal login password! ***
+Leave it blank if you still will allow free readings at your site.
+$paypal_only_password = '';
+The example allows free readings.
+
+$payment_rx_message will be displayed on the receipt page after PayPal has completed the transaction. You can add a link back to your calling page here if you like!
+$payment_rx_message = "Your payment was received.<br>Your Tarot Reading will arrive in less than 24 hours.<br>";
+
+$Paypal_cmd  should not need to be modified.
+
+$paypal_redirect_cmd  should not need to be modified.
+
+$paypal_button can be modified if you want to use a different paypal button image.
+
+The paypal.html files are the same as your standard spread forms with one difference. The action tag will now point towards pre_paypal.cgi vice tarot.cgi
+See the paypal.html examples sent with the tarot.cgi script.
+
+You may need you cange cgi to cgi-bin in each paypal.html file if that is the directory you use.
+
+The form tag should now be similar to:
+
+<FORM NAME="TarotForm" ACTION="/cgi/tarot/pre_paypal.cgi" METHOD="post" TARGET="_blank">
+
+<INPUT TYPE="hidden" NAME="item_name" VALUE="Payment for Tarot Reading">
+<INPUT TYPE="HIDDEN" NAME="TarotDef" VALUE="../../tarot/spreads/deck1/three_card/vars.cgi"> 
+
+<P>To get a personal Tarot Card Reading,<BR>enter your first  name in the box below. </P> 
+<P>Your Name:<BR><INPUT TYPE="TEXT" NAME="Name" SIZE="25"></P> 
+<P>Your Question:<BR><INPUT TYPE="TEXT" NAME="Question"  SIZE="55"></P>
+<!-- The Email input is only required if you want the option to email Tarot readings. -->
+<P>Your Email : <BR><INPUT TYPE="TEXT" NAME="Email" SIZE="55"><br>Your Tarot Reading will be emailed to you.</P>
+
+<P><FONT FACE="Comic Sans MS"></FONT>&nbsp;&nbsp;<INPUT TYPE="SUBMIT" NAME="Submit1" VALUE="Get Reading"></P> 
+</FORM>
+
+
+--------------------------------
+Trouble Shooting
+--------------------------------
+
+See PayPalLog.txt in the /cgi/tarot/data/ directory or look in the subdirectories of /cgi/tarot/data/ 
