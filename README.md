@@ -1,9 +1,6 @@
 # Tarot_Script
 
-The most stable version is at
-https://www.emogic.com/store/tarot_script_automated_reading_script_ver_14_tarot_script_now_free
-
-Generate traffic and money by using a Tarot Card Reader on your site. It is easily modifiable for any type of reading. You can use your own Tarot graphics or use the Rider-Waite. Layouts are determined by an HTML template. The card database is an easily modifiable text file.
+It is easily modifiable for any type of reading. You can use your own Tarot graphics or use the Rider-Waite. Layouts are determined by an HTML template. The card database is an easily modifiable text file.
 
 The most flexible Tarot Card reader ever. Any spread is possible. The users name shows up in the reading giving it a personal touch! Instant Email tarot reading option is included!
 
@@ -20,8 +17,6 @@ Our script allows you:
 - Works with dotgo.com services so cell phones with texting can get your readings. See: https://www.dotgo.com/Publishers/Resources/DOTGOSimulator/ and type emogic.
 - Could be integrated into content management systems such as drupal if it allows php code and file() calls.
 - And more...
-
-For more detailed examples of what is possible with this script, go to Tarot of Timeless Truth and Aido Wedo and Zone31 check out the many free tarot card readings!
 
 Requires PERL.
 
