@@ -22,4 +22,4 @@ Requires PERL.
 
 Free. Not for resale.
 
-No I will not instll it for you.
+No I will not install it for you.
