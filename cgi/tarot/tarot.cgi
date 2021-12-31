@@ -35,6 +35,7 @@ eval {
 
 
         #load up common variables and routines. //houses &cgierr
+	use lib '.'; #nuts, PERL has changed. add local path to @INC
         #require $in{vars};
         require "core_vars.cgi";
         #require "paypal_vars.cgi";

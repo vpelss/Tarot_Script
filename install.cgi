@@ -14,6 +14,7 @@ eval {
         use CGI::Cookie;
         use File::Copy;
         use File::Find;
+	use lib '.'; #nuts, PERL has changed. add local path to @INC
         require "FileSystem.pm";
         };
 warn $@ if $@;
@@ -79,13 +80,13 @@ Location of Perl:$perlloc[0]
 <P>
 <INPUT TYPE="TEXT" NAME="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b>
 <P>
-<INPUT TYPE="TEXT" NAME="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Doucument root. The full path to where HTML documents are located. eg: eg: /home/working/public_html
+<INPUT TYPE="TEXT" NAME="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The full path to where HTML documents are located. eg: eg: /home/working/public_html
 <P>
-<INPUT TYPE="TEXT" NAME="TAROT_SCRIPT_PATH" Value="cgi/tarot" size="40"> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot
+<INPUT TYPE="TEXT" NAME="TAROT_SCRIPT_PATH" Value="cgi/tarot" size="40"> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
 <P>
-<INPUT TYPE="TEXT" NAME="TAROT_HTML_PATH" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot
+<INPUT TYPE="TEXT" NAME="TAROT_HTML_PATH" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in 'Document root/tarot')
 <P>
-<INPUT TYPE="TEXT" NAME="INSTALL_SCRIPT_ROOT" Value="$ENV{SCRIPT_PATH}" size="40"> install.cgi Script path. The full path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
+<INPUT TYPE="TEXT" NAME="INSTALL_SCRIPT_ROOT" Value="$ENV{SCRIPT_PATH}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
 <P>
 
 <INPUT TYPE="TEXT" NAME="sendmail" Value="$mailloc[1]" size="40"> Sendmail path. The path to where sendmail is located. <b>Usually /usr/lib/sendmail -t. The -t is strongly encouraged and may be required!</b>
@@ -133,7 +134,7 @@ if ($in{SERVER_ADMIN} ne '') {$tarot_vars =~ s/EMAIL_ADDRESS/$in{SERVER_ADMIN}/g
 if ($in{sendmail} ne '') {$tarot_vars =~ s/SENDMAIL_PATH/$in{sendmail}/g;} #$SEND_MAIL="SENDMAIL_PATH";
 if ($in{HTTP_HOST} ne '') {$tarot_vars =~ s/YOUR_SITE_URL/$in{HTTP_HOST}/g;} #$site_url='YOUR_SITE_URL';
 if ($TAROT_SCRIPT_ROOT ne '') {$tarot_vars =~ s/TAROT_SCRIPT_ROOT/$TAROT_SCRIPT_ROOT/g;} #$path_to_tarot_script = "TAROT_SCRIPT_ROOT";
-if ($in{TAROT_SCRIPT_PATH} ne '') {$tarot_vars =~ s/TAROT_SCRIPT_PATH/$in{TAROT_SCRIPT_PATH}/g;} #TAROT_SCRIPT_PATH;
+if ($in{TAROT_SCRIPT_PATH} ne '') {$tarot_vars =~ s/TAROT_SCRIPT_PATH/$in{DOCUMENT_ROOT}\/$in{TAROT_SCRIPT_PATH}/g;} #TAROT_SCRIPT_PATH;
 if ($in{TAROT_HTML_PATH} ne '') {$tarot_vars =~ s/TAROT_HTML_PATH/$in{TAROT_HTML_PATH}/g;} #TAROT_HTML_PATH;
 
 #write modified tarot_vars.cgi
