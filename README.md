@@ -1,6 +1,6 @@
 # Tarot_Script
 
-bbb
+bbbb
 
 It is easily modifiable for any type of reading. You can use your own Tarot graphics or use the Rider-Waite. Layouts are determined by an HTML template. The card database is an easily modifiable text file.
 
