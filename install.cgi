@@ -80,7 +80,7 @@ Location of Perl:$perlloc[0]
 <P>
 <INPUT TYPE="TEXT" NAME="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b>
 <P>
-<INPUT TYPE="TEXT" NAME="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The full path to where HTML documents are located. eg: eg: /home/working/public_html
+<INPUT TYPE="TEXT" NAME="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The FULL path to where HTML documents are located. eg: eg: /home/working/public_html
 <P>
 <INPUT TYPE="TEXT" NAME="TAROT_SCRIPT_PATH" Value="cgi/tarot" size="40"> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
 <P>
