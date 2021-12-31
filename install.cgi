@@ -14,6 +14,7 @@ eval {
         use CGI::Cookie;
         use File::Copy;
         use File::Find;
+	use lib '.'; #nuts, PERL has changed. add local path to @INC
         require "FileSystem.pm";
         };
 warn $@ if $@;
@@ -133,7 +134,7 @@ if ($in{SERVER_ADMIN} ne '') {$tarot_vars =~ s/EMAIL_ADDRESS/$in{SERVER_ADMIN}/g
 if ($in{sendmail} ne '') {$tarot_vars =~ s/SENDMAIL_PATH/$in{sendmail}/g;} #$SEND_MAIL="SENDMAIL_PATH";
 if ($in{HTTP_HOST} ne '') {$tarot_vars =~ s/YOUR_SITE_URL/$in{HTTP_HOST}/g;} #$site_url='YOUR_SITE_URL';
 if ($TAROT_SCRIPT_ROOT ne '') {$tarot_vars =~ s/TAROT_SCRIPT_ROOT/$TAROT_SCRIPT_ROOT/g;} #$path_to_tarot_script = "TAROT_SCRIPT_ROOT";
-if ($in{TAROT_SCRIPT_PATH} ne '') {$tarot_vars =~ s/TAROT_SCRIPT_PATH/$in{TAROT_SCRIPT_PATH}/g;} #TAROT_SCRIPT_PATH;
+if ($in{TAROT_SCRIPT_PATH} ne '') {$tarot_vars =~ s/TAROT_SCRIPT_PATH/$in{DOCUMENT_ROOT}\/$in{TAROT_SCRIPT_PATH}/g;} #TAROT_SCRIPT_PATH;
 if ($in{TAROT_HTML_PATH} ne '') {$tarot_vars =~ s/TAROT_HTML_PATH/$in{TAROT_HTML_PATH}/g;} #TAROT_HTML_PATH;
 
 #write modified tarot_vars.cgi
