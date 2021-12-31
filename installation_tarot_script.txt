@@ -156,7 +156,7 @@ Keep in mind that you only need to modify the decks if you wish to personalize t
 
 The database is a text-delimited database. It's delimiter character is the pipe "|". Delimiters are simply characters that separate a record's fields.
 
-THE FIRST LINE MUST CONTAIN THE FIELD NAMES!
+THE FIRST LINE MUST CONTAIN THE FIELD NAMES! 
 By default:
 objectnumber|objectname|objectimage|objectblurb 
 

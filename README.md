@@ -1,5 +1,5 @@
 # Tarot_Script
-
+kjj
 It is easily modifiable for any type of reading. You can use your own Tarot graphics or use the Rider-Waite. Layouts are determined by an HTML template. The card database is an easily modifiable text file.
 
 The most flexible Tarot Card reader ever. Any spread is possible. The users name shows up in the reading giving it a personal touch! Instant Email tarot reading option is included!
