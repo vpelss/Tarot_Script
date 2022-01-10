@@ -1,119 +1,276 @@
-<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
-<HTML> 
-  <HEAD> 
-	<TITLE>Free Tarot Card Readings - Emogic.com</TITLE><LINK REL="STYLESHEET"
-	HREF="tarot.css"> 
-  </HEAD> 
-  <BODY> <SCRIPT SRC="cookie.js"></SCRIPT> 
-	<TABLE CELLPADDING="10" CELLSPACING="0"
-	 STYLE="background-image: url(images/main.jpg); background-repeat: no-repeat; background-position: center center"
-	 WIDTH="500" ALIGN="CENTER"> 
-	  <TR> 
-		<TD VALIGN="TOP"> 
-		  <TABLE CELLPADDING="0" CELLSPACING="0" ALIGN="CENTER"> 
-			<TR> 
-			  <TD ALIGN="CENTER"> 
-				<P><FONT FACE="Comic Sans MS">Custom Tarot Card
-				  readings</FONT></P><!-- change ACTION to point to your tarot.cgi script -->
-				<FORM NAME="TarotForm" ACTION="/cgi/tarot/tarot.cgi"
-				 METHOD="post">
-<!--					  
-Switch to this one for PayPal readings
-<FORM NAME="TarotForm" ACTION="/cgi/tarot/pre_paypal.cgi" METHOD="post">
--->
-<!-- Add additional path to spreads that you created in the option dropdowns below!--><INPUT
-				  TYPE="HIDDEN" NAME="vars" VALUE="core_vars.cgi"> 
-				  <P><INPUT TYPE="HIDDEN" NAME="template" VALUE="tri"></P> 
-<!-- Add additional path to decks that you created in the option dropdowns below!-->
-				  <P>Reading Style: 
-					<SELECT NAME="database" SIZE="1"> 
-					  <OPTION VALUE="emogic"
-					   SELECTED="SELECTED">Emogic's</OPTION> 
-					  <OPTION VALUE="leila">Leila's</OPTION> 
-					</SELECT></P> 
-				  <P>Your First Name:<BR><INPUT TYPE="TEXT"
-					NAME="custom1" SIZE="25"></P> 
-				  <P><FONT COLOR="#FF66FF">Choose three topics that you wish to
-					know more about</FONT></P> 
-				  <P>First Concern:<BR> 
-					<SELECT NAME="custom41" SIZE="1"> 
-					  <OPTION VALUE="Love" SELECTED="SELECTED">Love</OPTION> 
-					  <OPTION VALUE="Money">Money</OPTION> 
-					  <OPTION VALUE="Career">Career</OPTION> 
-					  <OPTION VALUE="Spritual">Spiritual</OPTION> 
-					  <OPTION VALUE="Family">Family</OPTION> 
-					  <OPTION VALUE="Health">Health</OPTION> 
-					  <OPTION VALUE="Weather">Weather</OPTION> 
-					  <OPTION VALUE="Friendship">Friendship</OPTION> 
-					  <OPTION VALUE="Travel">Travel</OPTION> 
-					  <OPTION VALUE="Legal">Legal</OPTION> 
-					  <OPTION VALUE="Sex">Sex</OPTION> 
-					  <OPTION VALUE="Learning">Learning</OPTION> 
-					  <OPTION VALUE="Home">Home</OPTION> 
-					  <OPTION VALUE="Happiness">Happiness</OPTION> 
-					  <OPTION VALUE="Marriage">Marriage</OPTION> 
-					  <OPTION VALUE="Self">Self</OPTION> 
-					  <OPTION VALUE="Pets">Pets</OPTION> 
-					</SELECT></P> 
-				  <P>Second Concern:<BR> 
-					<SELECT NAME="custom42" SIZE="1"> 
-					  <OPTION VALUE="Love">Love</OPTION> 
-					  <OPTION VALUE="Career">Career</OPTION> 
-					  <OPTION VALUE="Spritual">Spiritual</OPTION> 
-					  <OPTION VALUE="Family">Family</OPTION> 
-					  <OPTION VALUE="Health">Health</OPTION> 
-					  <OPTION VALUE="Weather">Weather</OPTION> 
-					  <OPTION VALUE="Friendship">Friendship</OPTION> 
-					  <OPTION VALUE="Travel">Travel</OPTION> 
-					  <OPTION VALUE="Legal">Legal</OPTION> 
-					  <OPTION VALUE="Sex">Sex</OPTION> 
-					  <OPTION VALUE="Learning">Learning</OPTION> 
-					  <OPTION VALUE="Home">Home</OPTION> 
-					  <OPTION VALUE="Happiness">Happiness</OPTION> 
-					  <OPTION VALUE="Marriage">Marriage</OPTION> 
-					  <OPTION VALUE="Self">Self</OPTION> 
-					  <OPTION VALUE="Pets">Pets</OPTION> 
-					  <OPTION VALUE="Money" SELECTED="SELECTED">Money</OPTION> 
-					</SELECT></P> 
-				  <P>Third Concern:<BR> 
-					<SELECT NAME="custom43" SIZE="1"> 
-					  <OPTION VALUE="Love">Love</OPTION> 
-					  <OPTION VALUE="Spritual">Spiritual</OPTION> 
-					  <OPTION VALUE="Family">Family</OPTION> 
-					  <OPTION VALUE="Health">Health</OPTION> 
-					  <OPTION VALUE="Weather">Weather</OPTION> 
-					  <OPTION VALUE="Friendship">Friendship</OPTION> 
-					  <OPTION VALUE="Travel">Travel</OPTION> 
-					  <OPTION VALUE="Legal">Legal</OPTION> 
-					  <OPTION VALUE="Sex">Sex</OPTION> 
-					  <OPTION VALUE="Learning">Learning</OPTION> 
-					  <OPTION VALUE="Home">Home</OPTION> 
-					  <OPTION VALUE="Happiness">Happiness</OPTION> 
-					  <OPTION VALUE="Marriage">Marriage</OPTION> 
-					  <OPTION VALUE="Self">Self</OPTION> 
-					  <OPTION VALUE="Pets">Pets</OPTION> 
-					  <OPTION VALUE="Money">Money</OPTION> 
-					  <OPTION VALUE="Career"
-					   SELECTED="SELECTED">Career</OPTION> 
-					</SELECT></P> 
-						
-<!-- This Email input is only required if you want the option to email Tarot readings. Remove if desired.-->
-				  <P>Your Email: (not required)<BR>
-					<INPUT TYPE="TEXT" NAME="email" SIZE="55"></P> 
-				  <P><INPUT TYPE="SUBMIT" NAME="Submit1"
-					VALUE="Get Tarot Reading"
-					ONCLICK="var forever=new Date('October 17, 2030 03:24:00');setCookie('custom1', document.TarotForm.custom1.value , forever , '', '', '');setCookie('email', document.TarotForm.email.value , forever , '', '', '');setCookie('template', document.TarotForm.template.value , forever , '', '', '');setCookie('database', document.TarotForm.database.value , forever , '', '', '');"></P></FORM>
-				</TD> 
-			</TR> 
-			<TR> 
-			  <TD ALIGN="CENTER"> </TD> 
-			</TR> 
-		  </TABLE></TD> 
-	  </TR> 
-	</TABLE> <SCRIPT>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Emogic's Free Tarot Card Readings</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css" type="text/css">
+	<link rel="stylesheet" href="acss/skeleton.css" type="text/css">
+	<link rel="stylesheet" href="css/milligram.css" type="text/css">
+	<link rel="stylesheet" href="css/milligram.css.map" type="text/css">
+	<link rel="stylesheet" href="acss/purecssframework.css" type="text/css">
+	<link rel="stylesheet" href="acss/purecssframework.css.map" type="text/css"><!-- Google Fonts -->
+	<link rel="STYLESHEET" href="css/tarot.css" type="text/css">
+</head>
+
+<body>
+	<script src="cookie.js" type="text/javascript">
+</script>
+
+	<div class="container">
+
+<center>
+	<p>Focused Tarot Card Readings</p><!-- change ACTION to point to your tarot.cgi script -->
+</center>
+
+	<form name="TarotForm" action="/cgi/tarot/tarot.cgi" method="post" id="TarotForm">
+		<!-- Add additional path to spreads that you created in the option drop downs below!-->
+		<input type="hidden" name="vars" value="core_vars.cgi">
+
+		<input type="hidden" name="template" value="tri"><!-- Add additional path to decks that you created in the option drop downs below!-->
+
+		<label for='database'>Reading Style</label> <select name="database">
+			<option value="emogic" selected="selected">
+				Emogic's
+			</option>
+
+			<option value="leila">
+				Leila's
+			</option>
+		</select></p>
+
+		<label for='custom1'>Your First Name</label>
+		<input type="text" name="custom1" size="25"></p>
+
+		<p>Choose three topics that you wish to know more about</p>
+
+		<label for='custom41'>First Concern</label>
+		<select name="custom41" size="1">
+			<option value="Love" selected="selected">
+				Love
+			</option>
+
+			<option value="Money">
+				Money
+			</option>
+
+			<option value="Career">
+				Career
+			</option>
+
+			<option value="Spritual">
+				Spiritual
+			</option>
+
+			<option value="Family">
+				Family
+			</option>
+
+			<option value="Health">
+				Health
+			</option>
+
+			<option value="Weather">
+				Weather
+			</option>
+
+			<option value="Friendship">
+				Friendship
+			</option>
+
+			<option value="Travel">
+				Travel
+			</option>
+
+			<option value="Legal">
+				Legal
+			</option>
+
+			<option value="Sex">
+				Sex
+			</option>
+
+			<option value="Learning">
+				Learning
+			</option>
+
+			<option value="Home">
+				Home
+			</option>
+
+			<option value="Happiness">
+				Happiness
+			</option>
+
+			<option value="Marriage">
+				Marriage
+			</option>
+
+			<option value="Self">
+				Self
+			</option>
+
+			<option value="Pets">
+				Pets
+			</option>
+		</select></p>
+
+		<label for='custom42'>Second Concern</label>
+		<select name="custom42" size="1">
+			<option value="Love">
+				Love
+			</option>
+
+			<option value="Career">
+				Career
+			</option>
+
+			<option value="Spritual">
+				Spiritual
+			</option>
+
+			<option value="Family">
+				Family
+			</option>
+
+			<option value="Health">
+				Health
+			</option>
+
+			<option value="Weather">
+				Weather
+			</option>
+
+			<option value="Friendship">
+				Friendship
+			</option>
+
+			<option value="Travel">
+				Travel
+			</option>
+
+			<option value="Legal">
+				Legal
+			</option>
+
+			<option value="Sex">
+				Sex
+			</option>
+
+			<option value="Learning">
+				Learning
+			</option>
+
+			<option value="Home">
+				Home
+			</option>
+
+			<option value="Happiness">
+				Happiness
+			</option>
+
+			<option value="Marriage">
+				Marriage
+			</option>
+
+			<option value="Self">
+				Self
+			</option>
+
+			<option value="Pets">
+				Pets
+			</option>
+
+			<option value="Money" selected="selected">
+				Money
+			</option>
+		</select></p>
+
+		<label for='custom43'>Third Concern</label>
+		<select name="custom43" size="1">
+			<option value="Love">
+				Love
+			</option>
+
+			<option value="Spritual">
+				Spiritual
+			</option>
+
+			<option value="Family">
+				Family
+			</option>
+
+			<option value="Health">
+				Health
+			</option>
+
+			<option value="Weather">
+				Weather
+			</option>
+
+			<option value="Friendship">
+				Friendship
+			</option>
+
+			<option value="Travel">
+				Travel
+			</option>
+
+			<option value="Legal">
+				Legal
+			</option>
+
+			<option value="Sex">
+				Sex
+			</option>
+
+			<option value="Learning">
+				Learning
+			</option>
+
+			<option value="Home">
+				Home
+			</option>
+
+			<option value="Happiness">
+				Happiness
+			</option>
+
+			<option value="Marriage">
+				Marriage
+			</option>
+
+			<option value="Self">
+				Self
+			</option>
+
+			<option value="Pets">
+				Pets
+			</option>
+
+			<option value="Money">
+				Money
+			</option>
+
+			<option value="Career" selected="selected">
+				Career
+			</option>
+		</select></p><!-- This Email input is only required if you want the option to email Tarot readings. Remove if desired.-->
+
+		<label for='email'>Your Email: (not required)</label>
+		<input type="text" name="email" size="55"></p>
+
+		<input type="submit" name="Submit1" value="Get Tarot Reading" onclick="var forever=new Date('October 17, 2030 03:24:00');setCookie('custom1', document.TarotForm.custom1.value , forever , '', '', '');setCookie('email', document.TarotForm.email.value , forever , '', '', '');setCookie('template', document.TarotForm.template.value , forever , '', '', '');setCookie('database', document.TarotForm.database.value , forever , '', '', '');">
+	</form><script type="text/javascript">
 document.TarotForm.custom1.value = getCookie('custom1') || '';
-document.TarotForm.email.value = getCookie('email') || '';
-#document.TarotForm.template.value = getCookie('template') || 'three_card';
-document.TarotForm.database.value = getCookie('database') || 'emogic';
-</SCRIPT> </BODY>
-</HTML>
+	document.TarotForm.email.value = getCookie('email') || '';
+	//document.TarotForm.template.value = getCookie('template') || 'three_card';
+	document.TarotForm.database.value = getCookie('database') || 'emogic';
+
+	</script>
+
+  </div>
+
+</body>
+</html>
