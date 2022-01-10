@@ -1,13 +1,8 @@
 #!/usr/bin/perl
 
-$version = "version18";
-
 ##################################################################
 #
 #  (C) Emogic Tarot Card Reader
-#  This software is NOT FREEWARE!
-#  To register it visit : http://www.emogic.com/
-#  You may not redistribute this script.
 #
 #######################################################################
 #
@@ -28,19 +23,14 @@ $version = "version18";
 ########################################################################
 
 eval {
-     use CGI;
-        #for paypal
-        use LWP::UserAgent;
-        use URI::Escape;
+		use strict;
+		use warnings;
 
-
-        #load up common variables and routines. //houses &cgierr
-	use lib '.'; #nuts, PERL has changed. add local path to @INC
-        #require $in{vars};
-        require "core_vars.cgi";
-        #require "paypal_vars.cgi";
-
-        };
+		use CGI;
+  use CGI::Cookie;
+		use lib '.'; #nuts, PERL has changed. add local path to @INC
+  use core_vars; #load up common variables
+		};
 warn $@ if $@;
 
 if ($@) {
@@ -53,6 +43,16 @@ if ($@) {
 eval { &main; };                            # Trap any fatal errors so the program hopefully
 if ($@) { &cgierr("fatal error: $@"); }     # never produces that nasty 500 server error page.
 exit;   # There are only two exit calls in the script, here and in in &cgierr.
+
+my %mailcodes = {-1 => '$smtphost',
+																	 -2 => 'socket() failed',
+														 -3 => 'connect() failed',
+-4 => 'service not available',
+-5 => 'unspecified communication error',
+-6 => 'local user $to unknown on host $smtp',
+ -7 => 'transmission of message failed',
+-8 => 'argument $to empty'
+};
 
 sub main
 {
@@ -119,16 +119,21 @@ foreach $field (0..($field_count - 1)) #create field hash %db_def of the field n
 #put em all together
 #open (PAGETEMPLATESOURCE, "$in{templatepath}") || die("no template file at $in{templatepath}");
 open (PAGETEMPLATESOURCE, "$templatepath{$in{template}}") || die("no template path at $templatepath{$in{template}}");
-open (HEADERESOURCE, "$path_to_header") || die("no header at $path_to_header");
+
+open (HEADSOURCE, "$path_to_head") || die("no header at $path_to_head");
+open (HEADERSOURCE, "$path_to_header") || die("no header at $path_to_header");
 open (FOOTERSOURCE, "$path_to_footer") || die("no footer at $path_to_footer");
-$header = join("" , <HEADERESOURCE> );
+$header = join("" , <HEADERSOURCE> );
+$head = join("" , <HEADSOURCE> );
 $pagetemplate = join("" , <PAGETEMPLATESOURCE>);
 #$pagetemplate = join("" , <HEADERESOURCE> , <PAGETEMPLATESOURCE> , <FOOTERSOURCE>);
 $footer = join("" , <FOOTERSOURCE>);
 close FOOTERSOURCE;
+close HEADSOURCE;
 close HEADERSOURCE;
 close PAGETEMPLATESOURCE;
 
+$pagetemplate =~ s/\<\%head\%\>/$head/g; #replace all <%head%> tokens
 $pagetemplate =~ s/\<\%header\%\>/$header/g; #replace all <%header%> tokens
 $pagetemplate =~ s/\<\%footer\%\>/$footer/g; #replace all <%footer%> tokens
 
@@ -143,7 +148,6 @@ if ($email_delayed)
 #clear @cards that will be selected
 #this variable will hold the cards we select and put them in a cookie
 @records = ();
-
 # @pickedcards is global array containing picked cards so we don't pick same card twice
 # it will contain the picked cards card number .
 @pickedcards = ();
@@ -178,33 +182,20 @@ foreach $num (1..50)
 srand(time ^ $$);
 
 #%cookies = fetch CGI::Cookie;
-
-#get the yummy cookies!
-# cookies are seperated by a comma and a space, this will
-# split them and return a hash of cookies
-@rawCookies = split(/; /,$ENV{'HTTP_COOKIE'});
-#%cookies;
-    foreach(@rawCookies)
-      {
-      ($key, $val) = split (/=/,$_);
-      $key =~ s/%([A-Fa-f\d]{2})/chr hex $1/eg; #unescape cookie data!
-      $val =~ s/%([A-Fa-f\d]{2})/chr hex $1/eg; #unescape cookie data!
-      $val =~ s/[^A-Za-z0-9\.\@\_\,]*//g; #sanitize to avoid xss
-      $cookies{$key} = $val;
-      }
+%cookies = CGI::Cookie->fetch;
 
 #if there were cookies then we are still in the same day so we show the cookie cards and do not need to pick random ones below
-#base cookie on username , question , and templatefile name (spread)
+#base cookie on name , question , and template name (spread)
 #remember no space in cookie name!
-$NameQuestionPaths = join('' , $in{'custom1'} , $in{'custom2'} , $in{'template'}, $in{'database'});
+$NameQuestionSpread = join('_' , $in{'custom1'} , $in{'custom2'} , $in{'template'});
 
 #see if we have a cookie set for this name and question. If so call &replacetokens() with each card in list
 #note: list of cards is integers of card number seperated by '|'
-if ($cookies{$NameQuestionPaths} ne "")
+if ($cookies{$NameQuestionSpread} ne "")
      {
         #use cards from cookie
         #cards are seperated by |
-        @records = split(',' , $cookies{$NameQuestionPaths});
+        @records = split(',' , $cookies{$NameQuestionSpread}->value);
         }
 else
     {
@@ -249,7 +240,7 @@ $pagetemplate =~ s/\<\%templatepath\%\>/$templatepath{$in{template}}/g; #replace
 $pagetemplate =~ s/\<\%database\%\>/$in{database}/g; #replace all <%database%> tokens
 $pagetemplate =~ s/\<\%template\%\>/$in{template}/g; #replace all <%template%> tokens
 
-#records can be placed in the template under
+#records can be placed in the template under - or use in cookie
 $recordsjoined = join(',' , @records);
 $pagetemplate =~ s/\<\%records\%\>/$recordsjoined/g; #replace all <%records%> tokens
 
@@ -284,7 +275,7 @@ if ( &valid_address($in{'email'}) && ($email_enabled) ) #see if the forms email 
                        $mailresult=&sendmail($from , $from , $in{'email'}, $SMTP_SERVER, "$subject", $message);
                        if ($mailresult ne "1") {
                              print "Content-type: text/html\n\n";
-                             print "MAIL NOT SENT. SMTP ERROR: $mailcodes{'$mailresult'}<br>Sendmail: $SEND_MAIL or SMTP Server: $SMTP_SERVER @mailloc\n<br><$sendmail>";
+                             print "MAIL NOT SENT. SMTP ERROR: $mailcodes{'$mailresult'}<br>Sendmail: $SEND_MAIL or SMTP Server: $SMTP_SERVER\n<br><$sendmail>";
                              exit;
                              }
                        open (emailArchive, ">$path_to_email_archive/$filename");
@@ -296,6 +287,16 @@ if ( &valid_address($in{'email'}) && ($email_enabled) ) #see if the forms email 
 
 #choose what to print to screen.
 if ($email_delayed) {$pagetemplate = $delay_email_template};
+
+$query = new CGI;
+$cookie1 = CGI::Cookie->new(-name => $NameQuestionSpread , -value => $recordsjoined, -expires => '+24h', -path => '/');
+$cookie2 = CGI::Cookie->new(-name => 'email', -value => $in{'email'}, -expires => '+24h', -path => '/');
+$cookie3 = CGI::Cookie->new(-name => 'template', -value => $in{'template'}, -expires => '+24h', -path => '/');
+$cookie4 = CGI::Cookie->new(-name => 'database', -value => $in{'database'}, -expires => '+24h', -path => '/');
+$cookie5 = CGI::Cookie->new(-name => 'custom1', -value => $in{'custom1'}, -expires => '+24h', -path => '/');
+$cookie6 = CGI::Cookie->new(-name => 'custom2', -value => $in{'custom2'}, -expires => '+24h', -path => '/');
+print $query->header(-cookie=>[$cookie1,$cookie2,$cookie3,$cookie4,$cookie5,$cookie6]);
+
 &print_screen($pagetemplate);
 
 };
@@ -313,11 +314,11 @@ sub thereisatokeninpagetemplate{
 #take the $tokentype argument given
 #see if token exists on pagetemplate.html
 #if so return 1, if not return 0
-
-my ($token);
-
+my ($token , $pagetemplate);
 $token = $_[0];
-return ($_[1] =~ m/$token/) or 0;
+$pagetemplate = $_[1];
+
+return ( ($pagetemplate =~ m/$token/) or 0 );
 };
 
 sub pickacard(){
@@ -452,10 +453,11 @@ foreach $key ( keys %db_def ) {
 
 sub print_screen
 {
-print "Content-type:text/html\n\n";
+#print "Content-type:text/html\n\n"; #CGI::Cookies will do this
 
 #print @alltokentypes;
 #print @records;
+
 print $_[0];
 print "\n\n";
 print "\n\n";
@@ -642,136 +644,4 @@ sub sendmail  {
 
     close(MAIL);
     return(1);
-}
-
-sub paypal
-{
-#tell paypal we are ok so it will not attempt to notify us again and again and again
-if ($ENV{'REQUEST_METHOD'}) { print "Content-type: text/html\n\n"; }
-
-# PayPal Instant Payment Notification Script
-# read post from PayPal system and add 'cmd=_notify-validate'
-read (STDIN, $query, $ENV{'CONTENT_LENGTH'});
-$query .= '&cmd=_notify-validate';
-
-# post full "query + &cmd=_notify-validate" back to PayPal system to validate
-#note that $query must be EXACTLY as PayPal sent it
-$ua = new LWP::UserAgent;
-      $req = new HTTP::Request 'POST',$paypalsite;
-      $req->content_type('application/x-www-form-urlencoded');
-      $req->content($query);
-      $res = $ua->request($req); #result from PayPal are in $res based on our request $req
-
-      # split recieved variables from PayPal's first call, above, to paypal.cgi into pairs
-      #use the following code. other routines mess up query
-      @pairs = split(/&/, $query);
-      $count = 0;
-      foreach $pair (@pairs)
-        {
-        ($name, $value) = split(/=/, $pair);
-        $value =~ tr/+/ /;
-        $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
-        $variable{$name} = $value;
-        $count++;
-        }
-
-        if ($res->is_error)
-             {
-             #HTTP error from PayPal site
-             open (PayPalLog, ">>$PayPalLog");
-             print PayPalLog "error $res->{status_line} \n";
-             close PayPalLog;
-             exit;
-             }
-
-        if ($res->content eq 'INVALID')
-             {
-             #log for manual investigation
-             open ACCOUNT, "$path_to_tarot_script/data/paypal/INVALID_$txn_id";
-             print ACCOUNT "$item_name|$payment_status|$mc_gross|$payer_email|$custom";
-             close ACCOUNT;
-             exit;
-             }
-
-        # assign PayPal variables to local variables
-        $item_name = $variable{'item_name'};
-        $receiver_email = $variable{'receiver_email'};
-        $custom = $variable{'custom'};
-        $payment_status = $variable{'payment_status'};
-        $mc_gross = $variable{'mc_gross'};
-        $txn_id = $variable{'txn_id'};
-        $payer_email = $variable{'payer_email'};
-
-        #check if user paid enough
-        if ($mc_gross < $payment_amount)
-                {
-                #user didn't pay us enough. No reading for them!
-                open (PayPalLog, ">>$PayPalLog");
-                print PayPalLog "$payer_email paid $mc_gross but we are charging $payment_amount. $txn_id: $tarotURL\?$custom \n";
-                close PayPalLog;
-                $mailresult=&sendmail($receiver_email , $receiver_email , $payer_email, $SMTP_SERVER, "Tarot reading error $payer_email", "You paid $mc_gross but we are charging $payment_amount");
-                exit;
-                }
-
-        if ($receiver_email ne "$paypaladdress") # check that receiver_email is our paypal account to prevent piggy back readings.
-             {
-             open (PayPalLog, ">>$PayPalLog") or die "Can't open $PayPalLog";
-             print PayPalLog "$txn_id: $receiver_email is not our paypal account ($paypaladdress). Someone is trying to piggy back. \n";
-             close PayPalLog;
-             exit;
-             }
-
-        # check that txn_id has not been previously processed
-        $pass = 1;
-        opendir(THEDIR, "$path_to_tarot_script/data/paypal/");
-        my @allfiles = readdir THEDIR;
-        closedir THEDIR;
-        foreach $line ( @allfiles )
-                 {
-                 if ($line =~ /$txn_id/) {$pass = 0};
-                 };
-        if ($pass == 0)
-             {
-             open (PayPalLog, ">>$PayPalLog");
-             print PayPalLog "$txn_id: already existed. \n";
-             close PayPalLog;
-             exit;
-             }
-
-        if (($payment_status eq "Completed")) # check the payment_status=Completed
-              {
-              #log the reading
-              open (PayPalLog, ">>$PayPalLog");
-              print PayPalLog "$txn_id: $tarotURL\?$custom \n";
-              close PayPalLog;
-
-              #print out a record of purchase
-              open (TXN, ">$path_to_tarot_script/data/paypal/$txn_id");
-              foreach $key ( keys %variable )
-                {
-                print TXN "$key : $variable{$key} <br>\n" ;
-                };
-              close TXN;
-
-        #do tarot reading here by calling tarot.cgi
-        $ENV{'REQUEST_METHOD'} = 'GET';
-        $ENV{'QUERY_STRING'} = "$custom&password=$paypal_only_password"; # pass query string to $ENV{'QUERY_STRING'} so the &parse_form in tarot.cgi can process it!
-        require "tarot.cgi"; #this actually calls and runs the tarot.cgi script
-      }
-
-#see if we are in a pay for reading mode only
-if ($paypal_only_password ne '')
-        {
-        #$in{'password'} is created in paypal.cgi from tarot_vars.cgi. $paypal_only_password is in tarot_vars.cgi.
-        if ($paypal_only_password ne $in{'password'})
-                {
-                open (ErrorLog, ">>data/ErrorLog.txt") or die "Can't open $file_to_send";
-                print ErrorLog "Call might not be from paypal.cgi Referer: $ENV{HTTP_REFERER} $paypal_only_password <> $in{'password'}\n";
-                close ErrorLog;
-                print "Content-type:text/html\n\n";
-                die ("This is a pay for tarot site. Call not from paypal.cgi Referer: $ENV{HTTP_REFERER}\n");
-                exit;
-                }
-
-        }
 }

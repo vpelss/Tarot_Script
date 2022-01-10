@@ -1,0 +1,65 @@
+
+BODY {
+  font-family: Comic Sans MS;
+  color: yellow;
+  background-color: black;
+  _font-size: 2rem;
+  _background-image: url(images/main.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+/*fix select*/
+OPTION {
+        color: #000000;
+    }
+
+
+A {
+  color: yellow;
+}
+
+
+#spread
+{
+_border: solid 1px white;
+width: 400pt;
+height: 400pt;
+position : relative;
+margin-left: auto;
+margin-right: auto;
+}
+
+.card
+{
+display: none;
+}
+
+.cardname
+{
+display:block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.facecards
+{
+display:block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.circle
+{
+position: absolute;
+}
+
+#eye
+{
+position: absolute;
+display:block;
+top: 200px;
+left: 200px;
+margin-left: auto;
+margin-right: auto;
+}
