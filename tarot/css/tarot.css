@@ -1,21 +1,39 @@
+.show{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+#the_eye{
+  width: 225px;
+}
 
 BODY {
-  font-family: Verdana;
+  font-family: Comic Sans MS;
   color: yellow;
   background-color: black;
+  _font-size: 2rem;
+  _background-image: url(images/main.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
 }
+
+/*fix select*/
+OPTION {
+        color: #000000;
+    }
+
 
 A {
   color: yellow;
 }
 
-HEAD {
-}
-
 
 #spread
 {
-//border: solid 1px white;
+_border: solid 1px white;
 width: 400pt;
 height: 400pt;
 position : relative;
@@ -30,7 +48,7 @@ display: none;
 
 .cardname
 {
-display:block;  
+display:block;
 margin-left: auto;
 margin-right: auto;
 }

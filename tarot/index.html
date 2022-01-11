@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/normalize.css" type="text/css">
 	<link rel="stylesheet" href="acss/skeleton.css" type="text/css">
 	<link rel="stylesheet" href="css/milligram.css" type="text/css">
-	<link rel="stylesheet" href="css/milligram.css.map" type="text/css">
+	<link rel="stylesheet" href="acss/milligram.css.map" type="text/css">
 	<link rel="stylesheet" href="acss/purecssframework.css" type="text/css">
 	<link rel="stylesheet" href="acss/purecssframework.css.map" type="text/css"><!-- Google Fonts -->
 	<link rel="STYLESHEET" href="css/tarot.css" type="text/css">
@@ -25,8 +25,8 @@
 		<form name="TarotForm" action="/cgi/tarot/tarot.cgi" method="get" id="TarotForm" class="form-elements no-rounded">
 			<!-- Add additional path to spreads that you created in the option dropdowns below!-->
 
-			<div class="">
-				<label for='template'>Spread</label> <select name="template">
+
+				<label for='template'>Spread</label> <select name="template" onchange='Display_Fields();'>
 					<option value="three_card" selected="selected">
 						Three Card Card
 					</option>
@@ -43,29 +43,14 @@
 						Golden Dawn
 					</option>
 
-					<option value="three_card">
-						---Once Card at a Time---
-					</option>
-
 					<option value="circle">
 						Circle of Truth
 					</option>
 
-					<option value="three_card_ocaat">
-						Three Card
+					<option value="focused">
+						Focused
 					</option>
 
-					<option value="celtic_cross_ocaat">
-						Celtic Cross
-					</option>
-
-					<option value="three_card">
-						---Mobile---Not for email---
-					</option>
-
-					<option value="three_card_mobile">
-						Three Card Mobile
-					</option>
 				</select><!-- Add additional path to decks that you created in the option dropdowns below!-->
 				 <label for='database'>Reading Style</label> <select name="database">
 					<option value="emogic" selected="selected">
@@ -81,32 +66,274 @@
 					<label for='custom1' class='label-inline'>Your First Name</label> <input type="text" name="custom1" size="25">
 				</div>
 
-				<div>
+				<div id='not_focused'>
 					<label for='custom2'>Your Question</label> <input type="text" name="custom2" size="55"><!-- This Email input is only required if you want the option to email Tarot readings. Remove if desired.-->
 				</div>
 
 				<div>
-					<label for='email'>Your Email (not required)</label> <input type="text" name="email" size="55">
+					<label for='email'>Your Email</label> <input type="text" name="email" size="55" placeholder='not required'>
 					</div>
+
+
+<div id='focused'>
+
+		<p>Choose three topics that you wish to know more about</p>
+
+		<label for='custom41'>First Concern</label>
+		<select name="custom41" size="1">
+			<option value="Love" selected="selected">
+				Love
+			</option>
+
+			<option value="Money">
+				Money
+			</option>
+
+			<option value="Career">
+				Career
+			</option>
+
+			<option value="Spritual">
+				Spiritual
+			</option>
+
+			<option value="Family">
+				Family
+			</option>
+
+			<option value="Health">
+				Health
+			</option>
+
+			<option value="Weather">
+				Weather
+			</option>
+
+			<option value="Friendship">
+				Friendship
+			</option>
+
+			<option value="Travel">
+				Travel
+			</option>
+
+			<option value="Legal">
+				Legal
+			</option>
+
+			<option value="Sex">
+				Sex
+			</option>
+
+			<option value="Learning">
+				Learning
+			</option>
+
+			<option value="Home">
+				Home
+			</option>
+
+			<option value="Happiness">
+				Happiness
+			</option>
+
+			<option value="Marriage">
+				Marriage
+			</option>
+
+			<option value="Self">
+				Self
+			</option>
+
+			<option value="Pets">
+				Pets
+			</option>
+		</select>
+
+		<label for='custom42'>Second Concern</label>
+		<select name="custom42" size="1">
+			<option value="Love">
+				Love
+			</option>
+
+			<option value="Career">
+				Career
+			</option>
+
+			<option value="Spritual">
+				Spiritual
+			</option>
+
+			<option value="Family">
+				Family
+			</option>
+
+			<option value="Health">
+				Health
+			</option>
+
+			<option value="Weather">
+				Weather
+			</option>
+
+			<option value="Friendship">
+				Friendship
+			</option>
+
+			<option value="Travel">
+				Travel
+			</option>
+
+			<option value="Legal">
+				Legal
+			</option>
+
+			<option value="Sex">
+				Sex
+			</option>
+
+			<option value="Learning">
+				Learning
+			</option>
+
+			<option value="Home">
+				Home
+			</option>
+
+			<option value="Happiness">
+				Happiness
+			</option>
+
+			<option value="Marriage">
+				Marriage
+			</option>
+
+			<option value="Self">
+				Self
+			</option>
+
+			<option value="Pets">
+				Pets
+			</option>
+
+			<option value="Money" selected="selected">
+				Money
+			</option>
+		</select>
+
+		<label for='custom43'>Third Concern</label>
+		<select name="custom43" size="1">
+			<option value="Love">
+				Love
+			</option>
+
+			<option value="Spritual">
+				Spiritual
+			</option>
+
+			<option value="Family">
+				Family
+			</option>
+
+			<option value="Health">
+				Health
+			</option>
+
+			<option value="Weather">
+				Weather
+			</option>
+
+			<option value="Friendship">
+				Friendship
+			</option>
+
+			<option value="Travel">
+				Travel
+			</option>
+
+			<option value="Legal">
+				Legal
+			</option>
+
+			<option value="Sex">
+				Sex
+			</option>
+
+			<option value="Learning">
+				Learning
+			</option>
+
+			<option value="Home">
+				Home
+			</option>
+
+			<option value="Happiness">
+				Happiness
+			</option>
+
+			<option value="Marriage">
+				Marriage
+			</option>
+
+			<option value="Self">
+				Self
+			</option>
+
+			<option value="Pets">
+				Pets
+			</option>
+
+			<option value="Money">
+				Money
+			</option>
+
+			<option value="Career" selected="selected">
+				Career
+			</option>
+		</select>
+
+</div>
+
+
 					<div>
 					<input type="submit" name="Submit1" value="Get Tarot Reading">
 					</div>
-			</div>
+
 		</form>
 
 		<center>
-			<p><u><a href="custom.html">A Focused Concerns Reading</a></u></p>
-
 			<p><u><a href="https://github.com/vpelss/Tarot_Script" target='_blank'>Code at github</a></u></p>
 		</center>
 	</div>
 
 	<script type="text/javascript">
+
+
+
 							document.TarotForm.custom1.value = getCookie('custom1') || '';
 							document.TarotForm.custom2.value = getCookie('custom2') || '';
+							document.TarotForm.custom2.value = getCookie('custom41') || '';
+							document.TarotForm.custom2.value = getCookie('custom42') || '';
+							document.TarotForm.custom2.value = getCookie('custom43') || '';
 								document.TarotForm.email.value = getCookie('email') || '';
 								document.TarotForm.template.value = getCookie('template') || 'three_card';
 								document.TarotForm.database.value = getCookie('database') || 'emogic';
+
+	function Display_Fields(){
+		var selected_field = document.TarotForm.template.value;
+		//var elem;
+		if(selected_field === 'focused'){
+			document.getElementById('focused').className = 'show';
+			document.getElementById('not_focused').className = 'hide';
+		}
+		else{
+			document.getElementById('focused').className = 'hide';
+			document.getElementById('not_focused').className = 'show';
+		}
+	}
+
+	Display_Fields();
+
 
 	</script>
 </body>
