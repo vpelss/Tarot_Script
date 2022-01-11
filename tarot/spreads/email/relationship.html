@@ -1,164 +1,142 @@
-<!-- This template can easily be edited (if you know HTML) to make your spread look exactly like you want. -->
-<!-- You may place up to twenty cards in this template. -->
-<!-- Some examples of what you can do are below. -->
-<!-- place <%Name%> where you want the Name input from the calling form to appear -->
-<!-- place <%Question%> where you want the Question input from the calling form to appear -->
-<!-- place <%object1%><%objectimage%> where you want your first card's image path to be displayed  -->
-<!-- place <%object1%><%objectname%><BR> where you want your first card's name to be displayed  -->
-<!-- place <%object2%><%objectimage%> where you want your second card's image path to be displayed  -->
-<!-- Note: the data returned by the tarot.cgi script is contained in the deck.cgi text database file! It can be modified by you. -->
-<!-- Note: the tarot fields available in the deck.cgi text database are:  -->
-<!-- <%objectimage%> the url path to the image of the selected card (eg: /tarot/cardimagesrev/cups03.jpg might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectimage%> in this spreadtemplate.html file)-->
-<!-- <%objectblurb%> the text reading for the selected card (eg: "-Achievement and abundance are headed your way <%Name%>." might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectblurb%> in this spreadtemplate.html file) -->
-<!-- <%objectname%><BR> the text name of the selected card (eg: "Three of Cups" might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectname%><BR> in this spreadtemplate.html file) -->
-<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
-<HTML> 
-  <HEAD> 
-	 <TITLE>Relationship Tarot Reading</TITLE> 
-  </HEAD> 
-  <BODY><%header%>
-	 <TABLE CELLPADDING="0" CELLSPACING="0" BORDER="0" ALIGN="CENTER"> 
-		<TR> 
-		  <TD>&nbsp;</TD> 
+
+<HTML>
+  <HEAD>
+	 <TITLE>Relationship Tarot Reading</TITLE>
+   <%head%>
+  </HEAD>
+  <BODY>
+     <div class="container">
+    <%header%>
+ </br></br>
+
+	 <TABLE CELLPADDING="0" CELLSPACING="0" BORDER="0" ALIGN="CENTER">
+		<TR>
+		  <TD>&nbsp;</TD>
 		  <TD ALIGN="CENTER"> <A HREF="#mutual goals">Mutual goals<BR><BR><IMG
 			 NAME="pic1" ALT="Past Card"
 			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"></A> </TD>
-		  
-		  <TD>&nbsp;</TD> 
-		</TR> 
-		<TR> 
+		  <TD>&nbsp;</TD>
+		</TR>
+		<TR>
 		  <TD ALIGN="CENTER"> <A
 			 HREF="#their qualities">Their<BR>qualities<BR><BR><IMG NAME="pic1"
 			 ALT="Past Card" SRC="<%site_url%>/tarot/images/backsmall.jpg"
-			 WIDTH="50" HEIGHT="85"></A> </TD> 
+			 WIDTH="50" HEIGHT="85"></A> </TD>
 		  <TD ALIGN="CENTER"> <A HREF="#connection">Connection<BR><BR><IMG
 			 NAME="pic1" ALT="Past Card"
-			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"></A></TD> 
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"></A></TD>
 		  <TD ALIGN="CENTER"> <A
 			 HREF="#your qualities">Your<BR>qualities<BR><BR><IMG NAME="pic1"
 			 ALT="Past Card" SRC="<%site_url%>/tarot/images/backsmall.jpg"
-			 WIDTH="50" HEIGHT="85"></A></TD> 
-		</TR> 
-		<TR> 
+			 WIDTH="50" HEIGHT="85"></A></TD>
+		</TR>
+		<TR>
 		  <TD VALIGN="BOTTOM" ALIGN="CENTER"> <BR><BR><A
 			 HREF="#what they bring">What they<BR>bring<BR><BR><IMG NAME="pic1"
 			 ALT="Past Card" SRC="<%site_url%>/tarot/images/backsmall.jpg"
-			 WIDTH="50" HEIGHT="85"></A></TD> 
+			 WIDTH="50" HEIGHT="85"></A></TD>
 		  <TD VALIGN="TOP" ALIGN="CENTER"> <A HREF="#common base">Common
 			 base<BR><BR><IMG NAME="pic1" ALT="Past Card"
-			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"></A></TD> 
+			 SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50" HEIGHT="85"></A></TD>
 		  <TD VALIGN="BOTTOM" ALIGN="CENTER"> <BR><BR><A
 			 HREF="#what you bring">What you<BR>bring<BR><BR><IMG NAME="pic1"
 			 ALT="Past Card" SRC="<%site_url%>/tarot/images/backsmall.jpg"
-			 WIDTH="50" HEIGHT="85"></A></TD> 
-		</TR> 
-	 </TABLE> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards"> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="mutual goals"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">Mutual goals<BR>
-			 <IMG NAME="pic7" ALT="Mutual goals" ALIGN="MIDDLE"
-			 SRC="<%site_url%><%object7%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV>
-  
-  <%object7%><%objectname%><BR><BR><%object7%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="their qualities"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">Their qualities <BR>
-			 <IMG NAME="pic1" ALT="Their qualities" ALIGN="MIDDLE"
-			 SRC="<%site_url%><%object1%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV ID="blurb1"><%object1%><%objectname%><BR><BR>
-  <%object1%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="connection"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">Connection <BR>
-			 <IMG NAME="pic3" ALT="Connection" ALIGN="middle"
-			 SRC="<%site_url%><%object3%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV ID="blurb3"><%object3%><%objectname%><BR> <BR>
-  <%object3%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="your qualities"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">Your qualities <BR>
-			 <IMG NAME="pic2" ALT="Your qualities" ALIGN="middle"
-			 SRC="<%site_url%><%object2%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV ID="blurb2"><%object2%><%objectname%><BR> <BR>
-  <%object2%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="what they bring"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">What they bring<BR>
-			 <IMG NAME="pic5" ALT="What they bring to the relationship" ALIGN="middle"
-			 SRC="<%site_url%><%object5%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV ID="blurb5">
-  <%object5%><%objectname%><BR> <BR><%object5%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="common base"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">Common base <BR>
-			 <IMG NAME="pic4" ALT="Common base" ALIGN="middle"
-			 SRC="<%site_url%><%object4%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV ID="blurb4"><%object4%><%objectname%><BR> <BR>
-  <%object4%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE><HR> 
-	 <DIV><A NAME="what you bring"></A></DIV> 
-	 <TABLE CELLPADDING="5" CELLSPACING="0" WIDTH="100%" CLASS="blurb"> 
-		<TR> 
-		  <TD ALIGN="CENTER" CLASS="facecards">What you bring <BR>
-			 <IMG NAME="pic6" ALT="What you bring to the relationship" ALIGN="middle"
-			 SRC="<%site_url%><%object6%><%objectimage%>" WIDTH="50" CLASS="facecards">
-			 </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"> 
-			 <DIV ID="blurb6">
-  <%object6%><%objectname%><BR><BR><%object6%><%objectblurb%>
-			 </DIV> </TD> 
-		  <TD ALIGN="CENTER" VALIGN="TOP"><A HREF="#top">Top</A></TD> 
-		</TR> 
-	 </TABLE> 
-	  
-<%footer%></BODY>
+			 WIDTH="50" HEIGHT="85"></A></TD>
+		</TR>
+	 </TABLE>
+
+
+
+
+    <div class="row">
+      <A NAME="mutual goals"></A>
+      <div class="column"> Mutual goals<BR><IMG NAME="pic7" ALT="Mutual goals" ALIGN="MIDDLE" SRC="<%site_url%><%object7%><%objectimage%>"></div>
+      <div class="column">
+        <DIV><%object7%><%objectname%><BR><BR><%object7%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+    <HR>
+
+    <div class="row">
+      <A NAME="their qualities"></A>
+      <div class="column">
+        Their qualities<BR><IMG NAME="pic1" ALT="Their qualities" ALIGN="MIDDLE" SRC="<%site_url%><%object1%><%objectimage%>">
+      </div>
+      <div class="column">
+        <DIV ID="blurb1"><%object1%><%objectname%><BR><BR><%object1%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+    <HR>
+
+   <div class="row">
+     <A NAME="connection"></A>
+      <div class="column">
+       Connection<BR><IMG NAME="pic3" ALT="Connection" ALIGN="middle" SRC="<%site_url%><%object3%><%objectimage%>">
+      </div>
+      <div class="column">
+       <DIV ID="blurb3"><%object3%><%objectname%><BR><BR><%object3%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+    <HR>
+
+ <div class="row">
+     <A NAME="your qualities"></A>
+      <div class="column">
+      Your qualities<BR><IMG NAME="pic2" ALT="Your qualities" ALIGN="middle" SRC="<%site_url%><%object2%><%objectimage%>">
+      </div>
+      <div class="column">
+       <DIV ID="blurb2"><%object2%><%objectname%><BR><BR><%object2%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+    <HR>
+
+       <div class="row">
+    <A NAME="what they bring"></A>
+      <div class="column">
+    What they bring<BR><IMG NAME="pic5" ALT="What they bring to the relationship" ALIGN="middle" SRC="<%site_url%><%object5%><%objectimage%>">
+      </div>
+      <div class="column">
+       <DIV ID="blurb5"><%object5%><%objectname%><BR><BR><%object5%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+    <HR>
+
+     <div class="row">
+    <A NAME="common base"></A>
+      <div class="column">
+    Common base<BR><IMG NAME="pic4" ALT="Common base" ALIGN="middle" SRC="<%site_url%><%object4%><%objectimage%>">
+      </div>
+      <div class="column">
+       <DIV ID="blurb4"><%object4%><%objectname%><BR><BR><%object4%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+    <HR>
+
+    <div class="row">
+    <A NAME="what you bring"></A>
+      <div class="column">
+    What you bring<BR><IMG NAME="pic6" ALT="What you bring to the relationship" ALIGN="middle" SRC="<%site_url%><%object6%><%objectimage%>">
+      </div>
+      <div class="column">
+      <DIV ID="blurb6"><%object6%><%objectname%><BR><BR><%object6%><%objectblurb%></DIV>
+      </div>
+      <div class="column"><A HREF="#top">^Top</A></div>
+    </div>
+
+<%footer%>
+
+  </div>
+  </BODY>
 </HTML>
