@@ -1,0 +1,27 @@
+This template can easily be edited (if you know HTML) to make your spread look exactly like you want.
+
+You may place up to twenty cards in this templates.
+
+Some examples of what you can do are below.
+
+place <%Name%> where you want the Name input from the calling form to appear
+
+place <%Question%> where you want the Question input from the calling form to appear
+
+place <%object1%><%objectimage%> where you want your first card's image path to be displayed 
+
+place <%object1%><%objectname%> where you want your first card's name to be displayed 
+
+place <%object2%><%objectimage%> where you want your second card's image path to be displayed
+
+...etc 
+
+Note: the data returned by the tarot.cgi script is contained in the deck.cgi text database file! It can be modified by you.
+
+Note: the tarot fields available in the deck.cgi text database are: 
+
+<%objectimage%> the url path to the image of the selected card (eg: /tarot/cardimagesrev/cups03.jpg might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectimage%> in this spreadtemplate.html file)-->
+
+<%objectblurb%> the text reading for the selected card (eg: "-Achievement and abundance are headed your way <%Name%>." might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectblurb%> in this spreadtemplate.html file)
+
+<%objectname%> the text name of the selected card (eg: "Three of Cups" might be returned by the tarot.cgi script to replace all instances of <%object1%><%objectname%><BR> in this spreadtemplate.html file)
