@@ -5,18 +5,12 @@ The Email Delay script allows you to delay sending an email reading to your cust
 Important: First, ensure that your tarot.cgi script is set up and works, and can send emails without this script.
 ----------
 
-Modify the:
-require '/home/emogic/public_html/cgi/tarot/delay_email_vars.cgi';
-in the delay_email.cgi file to suit your servers path.
+Modify delay_email.cgi file to suit your servers path.
 
 Ensure that 'line wrapping' is turned off in your text editor!
 
-Change the values in delay_email_vars.cgi to suit.
-
 Upload delay_email.cgi to the same folder with tarot.cgi in ASCII format. Normally /cgi/tarot/
 Set permissions to 755. Some servers require different settings. Contact your server support staff.
-
-Upload delay_email_vars.cgi to the same folder with tarot.cgi in ASCII format. Normally /cgi/tarot/
 
 delay_email.cgi is to be run by a cron job. If you do not know what a cron job is, I suggest you ask your web hosting company to assist you in setting one up.
 I suggest delay_email.cgi be run once an hour.
