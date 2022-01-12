@@ -124,12 +124,12 @@ print "<br>Done.<p> \n";
 
 #modify file variables
 #load tarot_vars.cgi
-open (tarot_vars, "$TAROT_SCRIPT_ROOT/core_vars.cgi") or die("Can't open $TAROT_SCRIPT_ROOT/core_vars.cgi");
+open (tarot_vars, "$TAROT_SCRIPT_ROOT/core_vars.pm") or die("Can't open $TAROT_SCRIPT_ROOT/core_vars.pm");
 @tarot_vars= <tarot_vars>;
 close tarot_vars;
 $tarot_vars = join("" , @tarot_vars);
 
-#replace variables in core_vars.cgi
+#replace variables in core_vars.pm
 if ($in{SERVER_ADMIN} ne '') {$tarot_vars =~ s/EMAIL_ADDRESS/$in{SERVER_ADMIN}/g;} #email replace
 if ($in{sendmail} ne '') {$tarot_vars =~ s/SENDMAIL_PATH/$in{sendmail}/g;} #$SEND_MAIL="SENDMAIL_PATH";
 if ($in{HTTP_HOST} ne '') {$tarot_vars =~ s/YOUR_SITE_URL/$in{HTTP_HOST}/g;} #$site_url='YOUR_SITE_URL';
@@ -138,12 +138,13 @@ if ($in{TAROT_SCRIPT_PATH} ne '') {$tarot_vars =~ s/TAROT_SCRIPT_PATH/$in{DOCUME
 if ($in{TAROT_HTML_PATH} ne '') {$tarot_vars =~ s/TAROT_HTML_PATH/$in{TAROT_HTML_PATH}/g;} #TAROT_HTML_PATH;
 
 #write modified tarot_vars.cgi
-open (tarot_vars, ">$TAROT_SCRIPT_ROOT/core_vars.cgi") or die("Can't write to $TAROT_SCRIPT_ROOT/core_vars.cgi");
+open (tarot_vars, ">$TAROT_SCRIPT_ROOT/core_vars.pm") or die("Can't write to $TAROT_SCRIPT_ROOT/core_vars.pm");
 print tarot_vars $tarot_vars;
 close tarot_vars;
 
+=pod
 #change /cgi/ if necessary in index.html
-@list=('index.html','PayPal.html','custom.html','databases/emogic.cgi','databases/leila.cgi','spreads/relationship.html','spreads/three_card.html','spreads/celtic_cross.html','spreads/golden_dawn.html','spreads/custom.html','spreads/emailwillbesent.html');
+@list=('index.html','databases/emogic.cgi','databases/leila.cgi');
 
 foreach $item (@list)
          {
@@ -166,6 +167,7 @@ foreach $item (@list)
          print htmlindex $htmlindex;
          close htmlindex;
          }
+=cut
 
 #set file permissions. not required?
 

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<script src="cookie.js" type="text/javascript">
+	<script src="js/cookie.js" type="text/javascript">
 </script>
 
 	<div class="container">
@@ -308,16 +308,14 @@
 
 	<script type="text/javascript">
 
-
-
-							document.TarotForm.custom1.value = getCookie('custom1') || '';
-							document.TarotForm.custom2.value = getCookie('custom2') || '';
-							document.TarotForm.custom2.value = getCookie('custom41') || '';
-							document.TarotForm.custom2.value = getCookie('custom42') || '';
-							document.TarotForm.custom2.value = getCookie('custom43') || '';
-								document.TarotForm.email.value = getCookie('email') || '';
-								document.TarotForm.template.value = getCookie('template') || 'three_card';
-								document.TarotForm.database.value = getCookie('database') || 'emogic';
+	document.TarotForm.custom1.value = getCookie('custom1') || '';
+	document.TarotForm.custom2.value = getCookie('custom2') || '';
+	document.TarotForm.custom41.value = getCookie('custom41') || 'Love';
+	document.TarotForm.custom42.value = getCookie('custom42') || 'Money';
+	document.TarotForm.custom43.value = getCookie('custom43') || 'Career';
+	document.TarotForm.email.value = getCookie('email') || '';
+	document.TarotForm.template.value = getCookie('template') || 'three_card';
+	document.TarotForm.database.value = getCookie('database') || 'emogic';
 
 	function Display_Fields(){
 		var selected_field = document.TarotForm.template.value;
