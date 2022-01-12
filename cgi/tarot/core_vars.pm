@@ -10,7 +10,7 @@
 @HTTP_REFERER = ();
 #@HTTP_REFERER = ('127.0.0.1','www.emogic.com','www.somewhereincanada.com');
 
-$site_url = "http://home";
+$site_url = "YOUR_SITE_URL";
 #example $site_url = "https://www.emogic.com";
 #$site_url = "http://home";
 #required in spreadtemplate_email.html so URL is included in email readings
@@ -19,15 +19,12 @@ $site_url = "http://home";
 #you MUST use if you will be emailing your readings. Or your images will not show.
 #$site_url = "http://127.0.0.1";
 
-$path_to_script = "C:/home/cgi/tarot";
-#$path_to_script = "C:/home/cgi/tarot";
+$path_to_script = "TAROT_SCRIPT_PATH";
 #example: $path_to_script ="/home/emogic/public_html/cgi/tarot";
 #$path_to_script = "/home/emogic/public_html/cgi/tarot";
 
 $path_to_input_archive = "$path_to_script/data/input_archive";
-
 $path_to_delay_email = "$path_to_script/data/email_delay";
-
 $path_to_email_archive = "$path_to_script/data/email_archive";
 
 #you need to create one for each new spread and also create an entry in the initial index.html form
@@ -36,15 +33,9 @@ $templatepath{'three_card'} = "../../tarot/spreads/email/three_card.html";
 $templatepath{'relationship'} = "../../tarot/spreads/email/relationship.html";
 $templatepath{'celtic_cross'} = "../../tarot/spreads/email/celtic_cross.html";
 $templatepath{'golden_dawn'} = "../../tarot/spreads/email/golden_dawn.html";
-$templatepath{'tri'} = "../../tarot/spreads/email/custom.html";
+$templatepath{'focused'} = "../../tarot/spreads/email/focused.html";
 
-$templatepath{'three_card_ocaat'} = "../../tarot/spreads/ocaat/three_card.html";
-$templatepath{'relationship_ocaat'} = "../../tarot/spreads/ocaat/relationship.html";
-$templatepath{'celtic_cross_ocaat'} = "../../tarot/spreads/ocaat/celtic_cross.html";
-$templatepath{'golden_dawn_ocaat'} = "../../tarot/spreads/ocaat/golden_dawn.html";
 $templatepath{'circle'} = "../../tarot/spreads/ocaat/circle.html";
-
-$templatepath{'three_card_mobile'} = "../../tarot/spreads/tablet/three_card_mobile.html";
 
 #you need to create one for each new database and also create an entry in the initial index.html form
 #$databasepath{'reference variable database in calling form index.html'} = "/home/emogic/public_html/tarot/databases/emogic.cgi";
@@ -72,7 +63,7 @@ $SEND_MAIL= "SENDMAIL_PATH";
 $email_enabled = 1;
 #set to 0 if you want to disable email tarot readings
 
-$from = "Tarot Mailer wampserver\@wampserver.invalid";
+$from = "Tarot Mailer EMAIL_ADDRESS";
 #This will be in all Email from addresses
 #example $from = "Tarot Mailer vpelss\@emogic.com";
 #THE SLASH IS MANDITORY!

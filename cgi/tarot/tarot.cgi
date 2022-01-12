@@ -195,7 +195,8 @@ if ($cookies{$NameQuestionSpread} ne "")
      {
         #use cards from cookie
         #cards are seperated by |
-        @records = split(',' , $cookies{$NameQuestionSpread}->value);
+								@records = $cookies{$NameQuestionSpread}->value;
+        #@records = split(',' , $cookies{$NameQuestionSpread}->value);
         }
 else
     {
@@ -207,7 +208,8 @@ else
                 {
                 $recordnumber = &pickacard();# this returns a random card from deck.cgi. It keeps track of cards already picked and does not return those.
                 if ($recordnumber == -1) {last;} #if out of cards break out
-                @records = (@records , $recordnumber); #remember cards for users cookie
+                #@records = (@records , $recordnumber); #remember cards for users cookie
+																push @records , ($recordnumber);
                 }
         }
     }
@@ -288,14 +290,35 @@ if ( &valid_address($in{'email'}) && ($email_enabled) ) #see if the forms email 
 #choose what to print to screen.
 if ($email_delayed) {$pagetemplate = $delay_email_template};
 
+#get ALL inputs and set as cookies
+my @keys = keys %in;
+my @cookies;
+my $cookie;
+foreach $key (@keys){
+	my $value = $in{"$key"};
+	if($value ne ''){
+		$cookie = CGI::Cookie->new(-name => $key, -value => $value, -expires => '+24h', -path => '/');
+		push @cookies , ($cookie);
+	}
+}
+$cookie = CGI::Cookie->new(-name => $NameQuestionSpread , -value => [@records] , -expires => '+24h', -path => '/'); #add or cards
+push @cookies , ($cookie);
 $query = new CGI;
+print $query->header(-cookie=>[@cookies]);
+
+=pod
 $cookie1 = CGI::Cookie->new(-name => $NameQuestionSpread , -value => $recordsjoined, -expires => '+24h', -path => '/');
 $cookie2 = CGI::Cookie->new(-name => 'email', -value => $in{'email'}, -expires => '+24h', -path => '/');
 $cookie3 = CGI::Cookie->new(-name => 'template', -value => $in{'template'}, -expires => '+24h', -path => '/');
 $cookie4 = CGI::Cookie->new(-name => 'database', -value => $in{'database'}, -expires => '+24h', -path => '/');
 $cookie5 = CGI::Cookie->new(-name => 'custom1', -value => $in{'custom1'}, -expires => '+24h', -path => '/');
 $cookie6 = CGI::Cookie->new(-name => 'custom2', -value => $in{'custom2'}, -expires => '+24h', -path => '/');
-print $query->header(-cookie=>[$cookie1,$cookie2,$cookie3,$cookie4,$cookie5,$cookie6]);
+$cookie7 = CGI::Cookie->new(-name => 'custom41', -value => $in{'custom41'}, -expires => '+24h', -path => '/');
+$cookie8 = CGI::Cookie->new(-name => 'custom42', -value => $in{'custom42'}, -expires => '+24h', -path => '/');
+$cookie9 = CGI::Cookie->new(-name => 'custom43', -value => $in{'custom43'}, -expires => '+24h', -path => '/');
+$query = new CGI;
+print $query->header(-cookie=>[$cookie1,$cookie2,$cookie3,$cookie4,$cookie5,$cookie6,$cookie7,$cookie8,$cookie9]);
+=cut
 
 &print_screen($pagetemplate);
 
