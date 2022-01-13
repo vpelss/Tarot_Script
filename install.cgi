@@ -71,29 +71,31 @@ Perl Executable:$^X
 <p>
 Perl Version:$]
 <p>
+
 <form action="install.cgi">
 
 Location of Perl:$perlloc[0]
 <p>
 
-<INPUT TYPE="TEXT" NAME="HTTP_HOST" Value="http://$ENV{HTTP_HOST}" size="40"> Server URL must be the base URL address with the preceding http:// eg: http://www.emogic.com
+<INPUT TYPE="TEXT" name="HTTP_HOST" Value="http://$ENV{HTTP_HOST}" size="40"> Server URL must be the base URL address with the preceding http:// eg: http://www.emogic.com
 <P>
-<INPUT TYPE="TEXT" NAME="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b>
+<INPUT TYPE="TEXT" name="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b>
 <P>
-<INPUT TYPE="TEXT" NAME="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The FULL path to where HTML documents are located. eg: eg: /home/working/public_html
+<INPUT TYPE="TEXT" name="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The FULL path to where HTML documents are located. eg: eg: /home/working/public_html
 <P>
-<INPUT TYPE="TEXT" NAME="TAROT_SCRIPT_PATH" Value="cgi/tarot" size="40"> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
+<INPUT TYPE="TEXT" name="TAROT_SCRIPT_PATH" Value="cgi/tarot" size="40"'> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
 <P>
-<INPUT TYPE="TEXT" NAME="TAROT_HTML_PATH" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in 'Document root/tarot')
+<INPUT TYPE="TEXT" name="TAROT_HTML_PATH" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in 'Document root/tarot')
 <P>
-<INPUT TYPE="TEXT" NAME="INSTALL_SCRIPT_ROOT" Value="$ENV{SCRIPT_PATH}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
-<P>
-
-<INPUT TYPE="TEXT" NAME="sendmail" Value="$mailloc[1]" size="40"> Sendmail path. The path to where sendmail is located. <b>Usually /usr/lib/sendmail -t. The -t is strongly encouraged and may be required!</b>
+<INPUT TYPE="TEXT" name="INSTALL_SCRIPT_ROOT" Value="$ENV{SCRIPT_FILENAME}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
 <P>
 
-<INPUT TYPE="SUBMIT" NAME="Submit1" value="Install Tarot Script">
+<INPUT TYPE="TEXT" name="sendmail" Value="$mailloc[1]" size="40"> Sendmail path. The path to where sendmail is located. <b>Usually /usr/lib/sendmail -t. The -t is strongly encouraged and may be required!</b>
+<P>
+
+<INPUT TYPE="SUBMIT" name="Submit1" value="Install Tarot Script">
 </form>
+
 |;
 
 }
@@ -207,7 +209,6 @@ else
     print "No path was entered."
     };
 };
-
 
 sub parse_form {
 # --------------------------------------------------------
