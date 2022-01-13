@@ -10,6 +10,10 @@
   display: none;
 }
 
+td, th { /* fix milligram line in tables  */
+    border-bottom: none;
+}
+
 #the_eye{
   width: 225px;
 }
