@@ -32,7 +32,7 @@ Introduction
 
 There are six files required for the tarot script to operate.
 
-1. tarot.cgi + core.cgi - the script itself which should not need to be modified.
+1. tarot.cgi - the script itself which should not need to be modified.
 
 2. /tarot/databases/XXXX.cgi - a text database of your cards in the deck for ALL the spreads. You will add new files as you add new spreads. There should normally be only one deck.cgi file but depending on complexity, you may want more. It's extension is ".cgi" only for security reasons. It is not a script itself.
 
@@ -251,30 +251,3 @@ Simply copy and rename an existing spread template html file in /tarot/spreads/.
 
 Note that you can also create multiple /tarot/databases/ deck databases with unique card images or card descriptions.
 
------------------------------------------------------------
-Full integration with CMS - potential security risk - be careful 
------------------------------------------------------------
-
-It be integrated into content management systems such as drupal if your host and CMS allows php code and file() calls.
-
-Notes:
-1. potential security risk - be careful
-2. Tarot CSS can conflict with CMS CSS
-
-Sample code (not any security built in):
-
-Have a CMS based tarot form page call a CMS page (say tarotreading) with the usual variables. eg:
-/tarotreading/?vars=core_vars.cgi&template=three_card&database=emogic&custom1=&custom2=&email=
-
-Then add to the tarotreading CMS page:
-<?php
-$template  = $_GET["template"];
-$database = $_GET["database"];
-$custom1 = $_GET["custom1"];
-$custom2 = $_GET["custom1"];
-$email = $_GET["email"];
-$str = implode('',file( "http://www.emogic.com/cgi/tarot/tarot.cgi?template=$template&database=$database&vars=core_vars.cgi&cusom1=$custom1&custom2=$custom2&email=$email" ));
-#remove: http://www.emogic.com/tarot/tarot.css
-$str = str_replace  ( "http://www.emogic.com/tarot/tarot.css"  , ""  ,  $str  );
-print( $str );
-?>
