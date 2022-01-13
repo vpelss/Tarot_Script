@@ -4,23 +4,17 @@ Our database is so versatile, that you can use it for ANY type of reading. You c
 
 With the Tarot script you can create an unlimited number of spreads. The spreads can be modified to suit the look of your site just by editing an html template.
 
-Our Tarot script comes with 4 spreads to start you off! Celtic Cross, Golden Dawn, Relationship, and Three Card.
-
-There are dotgo****.html templates to be used with the dotgo.com services. There is also an example index.cmrl file as an example. Visit dotgo.com for support with their services. 
+Our Tarot script comes with some spreads to start you off! 
 
 The Tarot database is text based and modifiable. This allows you to change card descriptions and point to other card images easily.
 
 Our Tarot script will allow you to show Tarot readings instantly at your web site, or to send the Tarot reading to your visitors by Email, or both!
 
-Add on modules are available. (purchased separately)
-
+A Delayed Email modules is available and you must edit and install it manually.
 delay_email.cgi will allow you to delay the email readings by any time desired. This can make it seem like a person actually doing the reading.
-
 delay_email.cgi is run by a cron job. So your web service provider must support and allow this.
 
-paypal.cgi allows you to charge for the script's Tarot readings. Once payment has been verified by Paypal your script will email a reading to the customer.
-
-IMPORTANT: It is fully expected that people who buy the script will modify the templates to suit their needs. Ads and the like are in the templates as examples of what you might do. You can add or remove anything from the templates.
+It is fully expected that people who user the script will modify the templates to suit their needs. 
 
 -----------------------
 Automated installer script
@@ -46,7 +40,7 @@ There are six files required for the tarot script to operate.
 
 4. index.html - The first page your visitors will see. This file asks for the visitors name and a question, after which, it runs tarot.cgi and returns the spread results. You can modify it to look the way you want.
 
-5. core_vars.cgi - Variables used for by tarot.cgi
+5. core_vars.pm - Variables used for by tarot.cgi
 
 -----------------------
 Script operation:
