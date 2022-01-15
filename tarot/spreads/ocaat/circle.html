@@ -7,7 +7,6 @@
      <div class="container">
 
     <%header%>
-    <br><br>
 
 	 <P ALIGN="CENTER">The Circle of Truth - <FONT SIZE="-4"><br>Think carefully on your question.<br>Then click on a
 		card.<br>Meditate on it's meaning.</FONT></P>
@@ -170,6 +169,7 @@
 //start dialogs and turn off
 $(function() {
     $( ".dialogs" ).dialog({
+      position: { my: "center", at: "center", of: window },
         autoOpen: false,
       modal: true,
       buttons: {
@@ -182,7 +182,7 @@ $(function() {
 
 var numberOfItems = 20; //must have corresponding div and class
 //let intViewportWidth = document.getElementById('html').clientWidth;
-let spreadWidth = document.getElementById('circle_spread').clientWidth * .8;
+let spreadWidth = document.getElementById('circle_spread').clientWidth * 0.8;
 let half = spreadWidth / 2;
 let rad = half;
 var width = rad; //radius
