@@ -23,7 +23,7 @@ BODY {
   color: yellow;
   background-color: black;
   _font-size: 2rem;
-  _background-image: url(images/main.jpg);
+  background-image: url(../images/ball.jpg);
   background-repeat: no-repeat;
   background-position: center top;
 }
@@ -43,28 +43,9 @@ A {
 #circle_spread
 {
 _border: solid 1px white;
-width: 350pt;
-height: 350pt;
+width: 300pt;
+height: 300pt;
 position : relative;
-margin-left: auto;
-margin-right: auto;
-}
-
-.aaacard
-{
-display: none;
-}
-
-.aaacardname
-{
-display:block;
-margin-left: auto;
-margin-right: auto;
-}
-
-.aaafacecards
-{
-display:block;
 margin-left: auto;
 margin-right: auto;
 }
