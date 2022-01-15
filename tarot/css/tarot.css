@@ -18,6 +18,13 @@ td, th { /* fix milligram line in tables  */
   width: 225px;
 }
 
+hr {/*override milligram*/
+    border: none;
+    height: 1px;
+    background-color: yellow;
+    margin: 1rem;
+}
+
 BODY {
   font-family: Comic Sans MS;
   color: yellow;
