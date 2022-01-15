@@ -1,4 +1,4 @@
-<HTML>
+<HTML id='html'>
   <HEAD>
 	 <TITLE>Circle of Truth Tarot Reading</TITLE>
    <%head%>
@@ -11,148 +11,158 @@
 
 	 <P ALIGN="CENTER">The Circle of Truth - <FONT SIZE="-4"><br>Think carefully on your question.<br>Then click on a
 		card.<br>Meditate on it's meaning.</FONT></P>
-	 <DIV ALIGN="CENTER" ID="spread">
-		<IMG SRC="/tarot/images/eye.gif" BORDER="0" ID="eye" ALIGN="ABSMIDDLE">
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card1' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card2' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card3' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A> </DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card4' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A> </DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card5' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card6' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card7' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card8' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card9' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card10' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card11' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card12' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card13' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card14' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card15' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card16' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card17' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card18' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card19' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV>
-		<DIV CLASS="circle"><A HREF="#"
-		  ONCLICK="$( '#card20' ).dialog( 'open' );"><IMG
-		  SRC="<%site_url%>/tarot/images/backsmall.jpg" WIDTH="50"></A></DIV> </DIV>
-	 <P></P>
+
+   <div id='pop_up_cards'>
+
 	 <DIV ID="card1" CLASS="dialogs card" TITLE="<%object1%><%objectname%>">
-		<IMG SRC="<%site_url%><%object1%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object1%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object1%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card2" CLASS="dialogs card" TITLE="<%object2%><%objectname%>">
-		<IMG SRC="<%site_url%><%object2%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object2%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object2%><%objectblurb%></DIV>
 		</DIV>
 	 <DIV ID="card3" CLASS="dialogs card" TITLE="<%object3%><%objectname%>">
-		<IMG SRC="<%site_url%><%object3%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object3%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object3%><%objectblurb%></DIV>
 		</DIV>
 	 <DIV ID="card4" CLASS="dialogs card" TITLE="<%object4%><%objectname%>">
-		<IMG SRC="<%site_url%><%object4%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object4%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object4%><%objectblurb%></DIV>
 		</DIV>
 	 <DIV ID="card5" CLASS="dialogs card" TITLE="<%object5%><%objectname%>">
-		<IMG SRC="<%site_url%><%object5%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object5%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object5%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card6" CLASS="dialogs card" TITLE="<%object6%><%objectname%>">
-		<IMG SRC="<%site_url%><%object6%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object6%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object6%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card7" CLASS="dialogs card" TITLE="<%object7%><%objectname%>">
-		<IMG SRC="<%site_url%><%object7%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object7%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object7%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card8" CLASS="dialogs card" TITLE="<%object8%><%objectname%>">
-		<IMG SRC="<%site_url%><%object8%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object8%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object8%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card9" CLASS="dialogs card" TITLE="<%object9%><%objectname%>">
-		<IMG SRC="<%site_url%><%object9%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object9%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object9%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card10" CLASS="dialogs card" TITLE="<%object10%><%objectname%>">
-		<IMG SRC="<%site_url%><%object10%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object10%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object10%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card11" CLASS="dialogs card" TITLE="<%object11%><%objectname%>">
-		<IMG SRC="<%site_url%><%object11%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object11%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object11%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card12" CLASS="dialogs card" TITLE="<%object12%><%objectname%>">
-		<IMG SRC="<%site_url%><%object12%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object12%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object12%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card13" CLASS="dialogs card" TITLE="<%object13%><%objectname%>">
-		<IMG SRC="<%site_url%><%object13%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object13%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object13%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card14" CLASS="dialogs card" TITLE="<%object14%><%objectname%>">
-		<IMG SRC="<%site_url%><%object14%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object14%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object14%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card15" CLASS="dialogs card" TITLE="<%object15%><%objectname%>">
-		<IMG SRC="<%site_url%><%object15%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object15%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object15%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card16" CLASS="dialogs card" TITLE="<%object16%><%objectname%>">
-		<IMG SRC="<%site_url%><%object16%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object16%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object16%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card17" CLASS="dialogs card" TITLE="<%object17%><%objectname%>">
-		<IMG SRC="<%site_url%><%object17%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object17%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object17%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card18" CLASS="dialogs card" TITLE="<%object18%><%objectname%>">
-		<IMG SRC="<%site_url%><%object18%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object18%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object18%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card19" CLASS="dialogs card" TITLE="<%object19%><%objectname%>">
-		<IMG SRC="<%site_url%><%object19%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object19%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object19%><%objectblurb%></DIV></DIV>
 
 	 <DIV ID="card20" CLASS="dialogs card" TITLE="<%object20%><%objectname%>">
-		<IMG SRC="<%site_url%><%object20%><%objectimage%>" CLASS="facecards">
+		<IMG SRC="<%URL_TO_INDEX%><%object20%><%objectimage%>" CLASS="facecards">
 		<DIV CLASS="cardblurb" ALIGN="CENTER"><%object20%><%objectblurb%></DIV></DIV>
+
+   </div>
+
+
+
+	 <DIV ALIGN="CENTER" ID="circle_spread">
+
+    <IMG SRC="<%URL_TO_INDEX%>/images/eye.gif" BORDER="0" ID="circle_eye">
+
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card1' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card2' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card3' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A> </DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card4' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A> </DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card5' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card6' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card7' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card8' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card9' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card10' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card11' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card12' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card13' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card14' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card15' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card16' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card17' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card18' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card19' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV>
+		<DIV CLASS="circle"><A HREF="#"
+		  ONCLICK="$( '#card20' ).dialog( 'open' );"><IMG
+		  SRC="<%URL_TO_INDEX%>/images/backsmall.jpg" WIDTH="50"></A></DIV> </DIV>
+	 <P></P>
 
 	 <P ALIGN="CENTER">If it was not for the circle, you would never have heard
 		of me - Pythagoras</P>
@@ -173,10 +183,14 @@ $(function() {
   });
 
 var numberOfItems = 20; //must have corresponding div and class
-var width = 200; //radius
-var height = 200; //radius
-var centerX = 200;
-var centerY = 200;
+//let intViewportWidth = document.getElementById('html').clientWidth;
+let spreadWidth = document.getElementById('circle_spread').clientWidth * .8;
+let half = spreadWidth / 2;
+let rad = half;
+var width = rad; //radius
+var height = rad; //radius
+var centerX = half;
+var centerY = rad;
 var nextObjectAngle = [];
 var incrimentAngle;
 var inOut = 0;

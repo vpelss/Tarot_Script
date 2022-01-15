@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -d
 
 ##################################################################
 #
@@ -10,11 +10,12 @@
 #######################################################################
 
 eval {
+		use strict;
         use CGI qw/:standard/;
         use CGI::Cookie;
         use File::Copy;
         use File::Find;
-	use lib '.'; #nuts, PERL has changed. add local path to @INC
+		use lib '.'; #nuts, PERL has changed. add local path to @INC
         require "FileSystem.pm";
         };
 warn $@ if $@;
@@ -26,6 +27,15 @@ if ($@) {
     exit;
 }
 
+#set in main
+my $SHORT_PATH_TO_SCRIPT;
+my $FULL_PATH_TO_SCRIPT;
+my $URL_TO_SCRIPT;
+my $SHORT_PATH_TO_INDEX;
+my $FULL_PATH_TO_INDEX;
+my $URL_TO_INDEX;
+my $FULL_PATH_TO_INSTALL_SCRIPT;
+
 eval { &main; };                            # Trap any fatal errors so the program hopefully
 if ($@) { &cgierr("fatal error: $@"); }     # never produces that nasty 500 server error page.
 exit;   # There are only two exit calls in the script, here and in in &cgierr.
@@ -34,18 +44,24 @@ sub main
 {
 %in = &parse_form; #get arguments from the calling form
 
+$SHORT_PATH_TO_SCRIPT = $in{'SHORT_PATH_TO_SCRIPT'};
+$FULL_PATH_TO_SCRIPT = "$in{'DOCUMENT_ROOT'}/$SHORT_PATH_TO_SCRIPT";
+$URL_TO_SCRIPT = "$in{'HTTP_HOST'}/$SHORT_PATH_TO_SCRIPT";
+$SHORT_PATH_TO_INDEX = $in{'SHORT_PATH_TO_INDEX'};
+$FULL_PATH_TO_INDEX = "$in{'DOCUMENT_ROOT'}/$SHORT_PATH_TO_INDEX";
+$URL_TO_INDEX = "$in{'HTTP_HOST'}/$SHORT_PATH_TO_INDEX";
+$FULL_PATH_TO_INSTALL_SCRIPT = $in{'FULL_PATH_TO_INSTALL_SCRIPT'};
+
 print "Content-type: text/html\n\n";
 
 if ($in{remove}) {&remove; exit;};
 
-if (%in == 0)
-     {
+if (%in == 0){
      &novars;
      }
-else
-    {
-    &vars;
-    };
+else{
+	&vars;
+	};
 
 exit;
 }
@@ -61,10 +77,12 @@ $plocation = `whereis perl`;
 print qq|
 <B>Tarot Script Installation</B>
 
+<p><b>WE WILL NOT BE RESPONSIBLE FOR DATA LOSS DUE TO THE USE OF install.cgi</b></p>
+
+<P><b>If you are unsure, install the Tarot Script manually.<b></p>
+
 <p><b>IMPORTANT</b>: This automatic script will only install your script to run from http://www.yoursite.com/cgi/tarot (or cgi-bin) and  http://www.yoursite.com/tarot locations. It is a very basic install to get you up and running fast.
 <br>For more detailed installations and other locations, you must manually install this script. If these folders already exist and contain files, it is suggested you make a backup before installation.
-
-<P><b>If you are unsure, install the Tarot Script manually. We will not be responsible for data loss due to the use of install.cgi</b>
 
 <p>
 Perl Executable:$^X
@@ -83,98 +101,74 @@ Location of Perl:$perlloc[0]
 <P>
 <INPUT TYPE="TEXT" name="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The FULL path to where HTML documents are located. eg: eg: /home/working/public_html
 <P>
-<INPUT TYPE="TEXT" name="TAROT_SCRIPT_PATH" Value="cgi/tarot" size="40"'> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
+<INPUT TYPE="TEXT" name="SHORT_PATH_TO_SCRIPT" Value="cgi/tarot" size="40"'> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
 <P>
-<INPUT TYPE="TEXT" name="TAROT_HTML_PATH" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in 'Document root/tarot')
+<INPUT TYPE="TEXT" name="SHORT_PATH_TO_INDEX" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in 'Document root/tarot')
 <P>
-<INPUT TYPE="TEXT" name="INSTALL_SCRIPT_ROOT" Value="$ENV{SCRIPT_FILENAME}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
+<INPUT TYPE="TEXT" name="FULL_PATH_TO_INSTALL_SCRIPT" Value="$ENV{SCRIPT_FILENAME}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
 <P>
 
-<INPUT TYPE="TEXT" name="sendmail" Value="$mailloc[1]" size="40"> Sendmail path. The path to where sendmail is located. <b>Usually /usr/lib/sendmail -t. The -t is strongly encouraged and may be required!</b>
+<INPUT TYPE="TEXT" name="sendmail" Value="$mailloc[0]" size="40"> Sendmail path. The path to where sendmail is located. <b>Usually /usr/lib/sendmail -t. The -t is strongly encouraged and may be required!</b>
 <P>
 
 <INPUT TYPE="SUBMIT" name="Submit1" value="Install Tarot Script">
 </form>
 
 |;
+}
 
+sub replace_tokens(){
+	my $filename = $_[0];
+
+	#load file
+	open (FILE, $filename) or die("Can't open $filename");
+	@file_text= <FILE>;
+	close FILE;
+	$file_text = join("" , @file_text);
+
+	#replace tokens in file
+	$file_text =~ s/EMAIL_ADDRESS/$in{SERVER_ADMIN}/g;
+	$file_text =~ s/SENDMAIL_PATH/$in{sendmail}/g;
+	$file_text =~ s/YOUR_SITE_URL/$in{HTTP_HOST}/g;
+	$file_text =~ s/FULL_PATH_TO_SCRIPT/$FULL_PATH_TO_SCRIPT/g;
+	$file_text =~ s/SHORT_PATH_TO_SCRIPT/$SHORT_PATH_TO_SCRIPT/g;
+	$file_text =~ s/URL_TO_SCRIPT/$URL_TO_SCRIPT/g;
+	my $FULL_PATH_TO_INDEX = "$in{DOCUMENT_ROOT}\/$SHORT_PATH_TO_INDEX";
+	$file_text =~ s/FULL_PATH_TO_INDEX/$FULL_PATH_TO_INDEX/g;
+	$file_text =~ s/URL_TO_INDEX/$URL_TO_INDEX/g;
+
+	#write modified file
+	open (FILE, ">$filename") or die("Can't write to $filename");
+	print FILE $file_text;
+	close FILE;
 }
 
 sub vars
 {
-$INSTALL_SCRIPT_ROOT = $in{INSTALL_SCRIPT_ROOT};
-$TAROT_SCRIPT_ROOT = "$in{DOCUMENT_ROOT}/$in{TAROT_SCRIPT_PATH}";
-$TAROT_ROOT = "$in{DOCUMENT_ROOT}/$in{TAROT_HTML_PATH}";
 
 #copy all /cgi files to destination
-print "Making $TAROT_SCRIPT_ROOT/ \n";
-if (not -d "$TAROT_SCRIPT_ROOT/") {mkdir("$TAROT_SCRIPT_ROOT/" , 0777) or die("Can't make $TAROT_SCRIPT_ROOT/");};
+print "Making $FULL_PATH_TO_SCRIPT/ \n";
+if (not -d "$FULL_PATH_TO_SCRIPT/") {mkdir("$FULL_PATH_TO_SCRIPT/" , 0777) or die("Can't make $FULL_PATH_TO_SCRIPT/");};
 print "<br>Done.<p> \n";
-print "Copying $INSTALL_SCRIPT_ROOT/cgi/tarot/ to $TAROT_SCRIPT_ROOT/ \n";
-&copyDir("$INSTALL_SCRIPT_ROOT/cgi/tarot/","$TAROT_SCRIPT_ROOT/") or die("Can't copy from $INSTALL_SCRIPT_ROOT/cgi/tarot/ to $TAROT_SCRIPT_ROOT/");
+print "Copying $FULL_PATH_TO_INSTALL_SCRIPT/cgi/tarot/ to $FULL_PATH_TO_SCRIPT/ \n";
+&copyDir("$FULL_PATH_TO_INSTALL_SCRIPT/cgi/tarot/","$FULL_PATH_TO_SCRIPT/") or die("Can't copy from $FULL_PATH_TO_INSTALL_SCRIPT/cgi/tarot/ to $FULL_PATH_TO_SCRIPT/");
 print "<br>Done.<p> \n";
-#set the permission for tarot.cgi
-chmod (0755,"$TAROT_SCRIPT_ROOT/tarot.cgi") or die('CHMOD of tarot.cgi failed.');
+
+chmod (0755,"$FULL_PATH_TO_SCRIPT/tarot.cgi") or die('CHMOD of tarot.cgi failed.'); #set the permission for tarot.cgi
 
 #copy all tarot html files to destination
-print "Making $TAROT_ROOT/ \n";
-if (not -d "$TAROT_ROOT/"){mkdir("$TAROT_ROOT/" , 0777) or die ("Can't make $TAROT_ROOT/");};
+print "Making $FULL_PATH_TO_INDEX/ \n";
+if (not -d "$FULL_PATH_TO_INDEX/"){mkdir("$FULL_PATH_TO_INDEX/" , 0777) or die ("Can't make $FULL_PATH_TO_INDEX/");};
 print "<br>Done.<p> \n";
-print "Copying $INSTALL_SCRIPT_ROOT/tarot/ to $TAROT_ROOT/ \n";
-&copyDir("$INSTALL_SCRIPT_ROOT/tarot/","$TAROT_ROOT/") or die("Can't copy $INSTALL_SCRIPT_ROOT/tarot/ to $TAROT_ROOT/");
+print "Copying $FULL_PATH_TO_INSTALL_SCRIPT/tarot/ to $FULL_PATH_TO_INDEX/ \n";
+&copyDir("$FULL_PATH_TO_INSTALL_SCRIPT/tarot/","$FULL_PATH_TO_INDEX/") or die("Can't copy $FULL_PATH_TO_INSTALL_SCRIPT/tarot/ to $FULL_PATH_TO_INDEX/");
 print "<br>Done.<p> \n";
 
-#modify file variables
-#load tarot_vars.cgi
-open (tarot_vars, "$TAROT_SCRIPT_ROOT/core_vars.pm") or die("Can't open $TAROT_SCRIPT_ROOT/core_vars.pm");
-@tarot_vars= <tarot_vars>;
-close tarot_vars;
-$tarot_vars = join("" , @tarot_vars);
-
-#replace variables in core_vars.pm
-if ($in{SERVER_ADMIN} ne '') {$tarot_vars =~ s/EMAIL_ADDRESS/$in{SERVER_ADMIN}/g;} #email replace
-if ($in{sendmail} ne '') {$tarot_vars =~ s/SENDMAIL_PATH/$in{sendmail}/g;} #$SEND_MAIL="SENDMAIL_PATH";
-if ($in{HTTP_HOST} ne '') {$tarot_vars =~ s/YOUR_SITE_URL/$in{HTTP_HOST}/g;} #$site_url='YOUR_SITE_URL';
-if ($TAROT_SCRIPT_ROOT ne '') {$tarot_vars =~ s/TAROT_SCRIPT_ROOT/$TAROT_SCRIPT_ROOT/g;} #$path_to_tarot_script = "TAROT_SCRIPT_ROOT";
-if ($in{TAROT_SCRIPT_PATH} ne '') {$tarot_vars =~ s/TAROT_SCRIPT_PATH/$in{DOCUMENT_ROOT}\/$in{TAROT_SCRIPT_PATH}/g;} #TAROT_SCRIPT_PATH;
-if ($in{TAROT_HTML_PATH} ne '') {$tarot_vars =~ s/TAROT_HTML_PATH/$in{TAROT_HTML_PATH}/g;} #TAROT_HTML_PATH;
-
-#write modified tarot_vars.cgi
-open (tarot_vars, ">$TAROT_SCRIPT_ROOT/core_vars.pm") or die("Can't write to $TAROT_SCRIPT_ROOT/core_vars.pm");
-print tarot_vars $tarot_vars;
-close tarot_vars;
-
-=pod
-#change /cgi/ if necessary in index.html
-@list=('index.html','databases/emogic.cgi','databases/leila.cgi');
-
-foreach $item (@list)
-         {
-         #read index.html
-         open (htmlindex, "$TAROT_ROOT/$item") or die("Can't open $TAROT_ROOT/$item");
-         @htmlindex = <htmlindex>;
-         close htmlindex;
-         $htmlindex = join("" , @htmlindex);
-
-         #replace all paths with correct ones in all files!!!!
-         $htmlindex =~ s/\<\%site_url\%\>\/tarot/\<\%site_url\%\>\/$in{TAROT_HTML_PATH}/gi;
-         $htmlindex =~ s/cgi\/tarot/$in{TAROT_SCRIPT_PATH}/gi;
-         $htmlindex =~ s/tarot\/spreads/$in{TAROT_HTML_PATH}\/spreads/gi;
-         $htmlindex =~ s/tarot\/databases/$in{TAROT_HTML_PATH}\/databases/gi;
-         $htmlindex =~ s/tarot\/tarot.css/$in{TAROT_HTML_PATH}\/tarot.css/gi;
-         $htmlindex =~ s/tarot\/images/$in{TAROT_HTML_PATH}\/images/gi;
-
-         #write new index.html file!
-         open (htmlindex, ">$TAROT_ROOT/$item") or die("can't write to $TAROT_ROOT/$item");
-         print htmlindex $htmlindex;
-         close htmlindex;
-         }
-=cut
-
-#set file permissions. not required?
+&replace_tokens( "$FULL_PATH_TO_SCRIPT/core_vars.pm" );
+&replace_tokens( "$FULL_PATH_TO_INDEX/index.html" );
 
 print "<P>Finished.<P>Test Tarot script installation:<br>";
-print "<p><a href='$in{HTTP_HOST}/$in{TAROT_HTML_PATH}/' target='_blank'>$in{HTTP_HOST}\/$in{TAROT_HTML_PATH}\/<\/a>";
+print "<p><a href='$URL_TO_INDEX' target='_blank'>$URL_TO_INDEX<\/a>";
 
 print qq|
 <p>&nbsp;</p>
@@ -190,7 +184,7 @@ print qq|
 <P>
 BE SURE THE FOLDER BELOW IS THE ONE YOU WANT TO DELETE! If unsure, do it manually.
 <P>
-<INPUT TYPE="TEXT" NAME="INSTALL_SCRIPT_ROOT" Value="$INSTALL_SCRIPT_ROOT" size="40">
+<INPUT TYPE="TEXT" NAME="FULL_PATH_TO_INSTALL_SCRIPT" Value="$FULL_PATH_TO_INSTALL_SCRIPT" size="40">
 </form>
 |;
 
@@ -198,10 +192,10 @@ BE SURE THE FOLDER BELOW IS THE ONE YOU WANT TO DELETE! If unsure, do it manuall
 
 sub remove
 {
-if ($in{INSTALL_SCRIPT_ROOT})
+if ($in{FULL_PATH_TO_INSTALL_SCRIPT})
     {
-    print "Removing installation files from $in{INSTALL_SCRIPT_ROOT}.";
-    removeDir ($in{INSTALL_SCRIPT_ROOT});
+    print "Removing installation files from $in{FULL_PATH_TO_INSTALL_SCRIPT}.";
+    removeDir ($in{FULL_PATH_TO_INSTALL_SCRIPT});
     print "<p>Done.";
     }
 else

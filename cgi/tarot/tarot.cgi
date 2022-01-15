@@ -4,10 +4,8 @@
 #
 #  (C) Emogic Tarot Card Reader
 #
-#######################################################################
+##################################################################
 #
-# Form supplied VARIABLES
-
 # Form supplied VARIABLES
 
 # template
@@ -237,6 +235,9 @@ foreach $temp (@records) #note that each $tmpcard from the cookie is really a re
 
 #replace global variables in $pagetemplate
 $pagetemplate =~ s/\<\%site_url\%\>/$site_url/g; #replace all <%site_url%> tokens
+
+$pagetemplate =~ s/\<\%URL_TO_INDEX\%\>/$url_to_index/g;
+
 $pagetemplate =~ s/\<\%databasepath\%\>/$databasepath{$in{database}}/g; #replace all <%databasepath%> tokens
 $pagetemplate =~ s/\<\%templatepath\%\>/$templatepath{$in{template}}/g; #replace all <%templatepath%> tokens
 $pagetemplate =~ s/\<\%database\%\>/$in{database}/g; #replace all <%database%> tokens

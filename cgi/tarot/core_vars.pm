@@ -12,44 +12,49 @@
 
 $site_url = "YOUR_SITE_URL";
 #example $site_url = "https://www.emogic.com";
-#$site_url = "http://home";
 #required in spreadtemplate_email.html so URL is included in email readings
 #Use the <%site_url%> in spreadtemplate_email.html like: <%site_url%><%card2%><%cardimage%>
-#you may want to leave blank if mixed http:// and https:// access is required but you may need to modify templates and databse
-#you MUST use if you will be emailing your readings. Or your images will not show.
-#$site_url = "http://127.0.0.1";
 
-$path_to_script = "TAROT_SCRIPT_PATH";
-#example: $path_to_script ="/home/emogic/public_html/cgi/tarot";
-#$path_to_script = "/home/emogic/public_html/cgi/tarot";
+$url_to_index = 'URL_TO_INDEX';
 
-$path_to_input_archive = "$path_to_script/data/input_archive";
-$path_to_delay_email = "$path_to_script/data/email_delay";
-$path_to_email_archive = "$path_to_script/data/email_archive";
+$short_path_to_script = "SHORT_PATH_TO_SCRIPT";
+#example: "/public_html/cgi/tarot";
+
+$full_path_to_script = "FULL_PATH_TO_SCRIPT";
+#eg: "/home/emogic/public_html/cgi/tarot";
+
+$short_path_to_index = "SHORT_PATH_TO_INDEX";
+
+$full_path_to_index = "FULL_PATH_TO_INDEX";
+#example: $path_to_index ="/home/emogic/public_html/tarot";
+
+$path_to_input_archive = "$full_path_to_script/data/input_archive";
+$path_to_delay_email = "$full_path_to_script/data/email_delay";
+$path_to_email_archive = "$full_path_to_script/data/email_archive";
 
 #you need to create one for each new spread and also create an entry in the initial index.html form
 #$templatepath{'reference variable "template" in calling form index.html'} = "/home/emogic/public_html/tarot/spreads/three_card.html";
-$templatepath{'three_card'} = "../../tarot/spreads/email/three_card.html";
-$templatepath{'relationship'} = "../../tarot/spreads/email/relationship.html";
-$templatepath{'celtic_cross'} = "../../tarot/spreads/email/celtic_cross.html";
-$templatepath{'golden_dawn'} = "../../tarot/spreads/email/golden_dawn.html";
-$templatepath{'focused'} = "../../tarot/spreads/email/focused.html";
+$templatepath{'three_card'} = "$full_path_to_index/spreads/email/three_card.html";
+$templatepath{'relationship'} = "$full_path_to_index/spreads/email/relationship.html";
+$templatepath{'celtic_cross'} = "$full_path_to_index/spreads/email/celtic_cross.html";
+$templatepath{'golden_dawn'} = "$full_path_to_index/spreads/email/golden_dawn.html";
+$templatepath{'focused'} = "$full_path_to_index/spreads/email/focused.html";
 
-$templatepath{'circle'} = "../../tarot/spreads/ocaat/circle.html";
+$templatepath{'circle'} = "$full_path_to_index/spreads/ocaat/circle.html";
 
 #you need to create one for each new database and also create an entry in the initial index.html form
 #$databasepath{'reference variable database in calling form index.html'} = "/home/emogic/public_html/tarot/databases/emogic.cgi";
-$databasepath{'emogic'} = "../../tarot/databases/emogic.cgi";
-$databasepath{'leila'} = "../../tarot/databases/leila.cgi ";
+$databasepath{'emogic'} = "$full_path_to_index/databases/emogic.cgi";
+$databasepath{'leila'} = "$full_path_to_index/databases/leila.cgi ";
 
 #head input, css, js, etc
-$path_to_head = "../../tarot/spreads/head.html";
+$path_to_head = "$full_path_to_index/spreads/head.html";
 
 #header
-$path_to_header = "../../tarot/spreads/header.html";
+$path_to_header = "$full_path_to_index/spreads/header.html";
 
 #footer
-$path_to_footer = "../../tarot/spreads/footer.html";
+$path_to_footer = "$full_path_to_index/spreads/footer.html";
 
 
 $SEND_MAIL= "SENDMAIL_PATH";

@@ -39,29 +39,30 @@ A {
 }
 
 
-#spread
+/* for circle*/
+#circle_spread
 {
 _border: solid 1px white;
-width: 400pt;
-height: 400pt;
+width: 350pt;
+height: 350pt;
 position : relative;
 margin-left: auto;
 margin-right: auto;
 }
 
-.card
+.aaacard
 {
 display: none;
 }
 
-.cardname
+.aaacardname
 {
 display:block;
 margin-left: auto;
 margin-right: auto;
 }
 
-.facecards
+.aaafacecards
 {
 display:block;
 margin-left: auto;
@@ -73,12 +74,12 @@ margin-right: auto;
 position: absolute;
 }
 
-#eye
+#circle_eye
 {
 position: absolute;
 display:block;
-top: 200px;
-left: 200px;
+top: 150pt;
+left: 150pt;
 margin-left: auto;
 margin-right: auto;
 }
