@@ -135,6 +135,7 @@ sub replace_tokens(){
 	$file_text =~ s/FULL_PATH_TO_SCRIPT/$FULL_PATH_TO_SCRIPT/g;
 	$file_text =~ s/SHORT_PATH_TO_SCRIPT/$SHORT_PATH_TO_SCRIPT/g;
 	$file_text =~ s/URL_TO_SCRIPT/$URL_TO_SCRIPT/g;
+	$file_text =~ s/SHORT_PATH_TO_INDEX/$SHORT_PATH_TO_INDEX/g;
 	my $FULL_PATH_TO_INDEX = "$in{DOCUMENT_ROOT}\/$SHORT_PATH_TO_INDEX";
 	$file_text =~ s/FULL_PATH_TO_INDEX/$FULL_PATH_TO_INDEX/g;
 	$file_text =~ s/URL_TO_INDEX/$URL_TO_INDEX/g;

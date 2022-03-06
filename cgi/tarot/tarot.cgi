@@ -297,10 +297,10 @@ my @cookies;
 my $cookie;
 foreach $key (@keys){
 	my $value = $in{"$key"};
-	if($value ne ''){
+	#if($value ne ''){
 		$cookie = CGI::Cookie->new(-name => $key, -value => $value, -expires => '+24h', -path => '/');
 		push @cookies , ($cookie);
-	}
+	#}
 }
 $cookie = CGI::Cookie->new(-name => $NameQuestionSpread , -value => [@records] , -expires => '+24h', -path => '/'); #add or cards
 push @cookies , ($cookie);
