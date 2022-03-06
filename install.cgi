@@ -95,15 +95,15 @@ Perl Version:$]
 Location of Perl:$perlloc[0]
 <p>
 
-<INPUT TYPE="TEXT" name="HTTP_HOST" Value="http://$ENV{HTTP_HOST}" size="40"> Server URL must be the base URL address with the preceding http:// eg: http://www.emogic.com
+<INPUT TYPE="TEXT" name="HTTP_HOST" Value="https://$ENV{HTTP_HOST}" size="40"> Server URL must be the base URL address with the preceding https:// eg: https://www.emogic.com
 <P>
-<INPUT TYPE="TEXT" name="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b>
+<INPUT TYPE="TEXT" name="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b> DO NOT FORGET THE \\
 <P>
 <INPUT TYPE="TEXT" name="DOCUMENT_ROOT" Value="$ENV{DOCUMENT_ROOT}" size="40"> Document root. The FULL path to where HTML documents are located. eg: eg: /home/working/public_html
 <P>
-<INPUT TYPE="TEXT" name="SHORT_PATH_TO_SCRIPT" Value="cgi/tarot" size="40"'> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to 'Document root/cgi/tarot')
+<INPUT TYPE="TEXT" name="SHORT_PATH_TO_SCRIPT" Value="cgi/tarot" size="40"'> Tarot script directory. Path where the Tarot script is to be located. (only cgi and cgi-bin is accepted) eg: cgi/tarot (script files will go to '[Document root]/cgi/tarot')
 <P>
-<INPUT TYPE="TEXT" name="SHORT_PATH_TO_INDEX" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in 'Document root/tarot')
+<INPUT TYPE="TEXT" name="SHORT_PATH_TO_INDEX" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in '[Document root]/tarot')
 <P>
 <INPUT TYPE="TEXT" name="FULL_PATH_TO_INSTALL_SCRIPT" Value="$ENV{SCRIPT_FILENAME}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
 <P>
