@@ -74,6 +74,8 @@ $plocation = `whereis perl`;
 @perlloc = split(" ",$plocation);
 @mailloc = split(" ",$sendmail);
 
+$Tarot_Script_Path = Cwd::cwd();
+
 print qq|
 <B>Tarot Script Installation</B>
 
@@ -105,7 +107,7 @@ Location of Perl:$perlloc[0]
 <P>
 <INPUT TYPE="TEXT" name="SHORT_PATH_TO_INDEX" Value="tarot" size="40"> Tarot directory. Path where the Tarot HTML documents are to be located. eg: tarot (will put HTML docs in '[Document root]/tarot')
 <P>
-<INPUT TYPE="TEXT" name="FULL_PATH_TO_INSTALL_SCRIPT" Value="$ENV{SCRIPT_FILENAME}" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
+<INPUT TYPE="TEXT" name="FULL_PATH_TO_INSTALL_SCRIPT" Value="$Tarot_Script_Path" size="40"> install.cgi Script path. The FULL path where this script and the data files are located. eg: /home/working/public_html/cgi/Tarot_Script
 <P>
 
 <INPUT TYPE="TEXT" name="sendmail" Value="$mailloc[0]" size="40"> Sendmail path. The path to where sendmail is located. <b>Usually /usr/lib/sendmail -t. The -t is strongly encouraged and may be required!</b>
