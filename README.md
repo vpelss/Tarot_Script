@@ -1,5 +1,7 @@
 # Tarot_Script
 
+Try it: https://emogic.com/tarot/
+
 It is easily modifiable for any type of reading. You can use your own Tarot graphics or use the Rider-Waite. Layouts are determined by an HTML template. The card database is an easily modifiable text file.
 
 The most flexible Tarot Card reader. Any spread is possible. The visitors name shows up in the reading giving it a personal touch! Instant (or delayed) Email tarot reading option is possible.
