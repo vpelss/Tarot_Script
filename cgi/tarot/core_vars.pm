@@ -16,6 +16,7 @@ $site_url = "YOUR_SITE_URL";
 #Use the <%site_url%> in spreadtemplate_email.html like: <%site_url%><%card2%><%cardimage%>
 
 $url_to_index = 'URL_TO_INDEX';
+#example: $url_to_index = 'https://www.emogic.com/tarot';
 
 $short_path_to_script = "SHORT_PATH_TO_SCRIPT";
 #example: "/public_html/cgi/tarot";
@@ -24,6 +25,7 @@ $full_path_to_script = "FULL_PATH_TO_SCRIPT";
 #eg: "/home/emogic/public_html/cgi/tarot";
 
 $short_path_to_index = "SHORT_PATH_TO_INDEX";
+#example: $short_path_to_index = "tarot";
 
 $full_path_to_index = "FULL_PATH_TO_INDEX";
 #example: $path_to_index ="/home/emogic/public_html/tarot";
