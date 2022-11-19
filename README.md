@@ -1,5 +1,7 @@
 # Tarot_Script
 
+See our other repository for our Wordpress version.
+
 Try it: https://emogic.com/tarot/
 
 It is easily modifiable for any type of reading. You can use your own Tarot graphics or use the Rider-Waite. Layouts are determined by an HTML template. The card database is an easily modifiable text file.
