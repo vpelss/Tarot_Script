@@ -1,6 +1,6 @@
 # Tarot_Script
 
-See our other repository for our Wordpress version.
+See our other repository for our Wordpress version. https://github.com/vpelss/Emogics_Tarot_Script_WP
 
 Try it: https://emogic.com/tarot/
 
