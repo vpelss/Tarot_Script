@@ -27,9 +27,8 @@ eval {
 		use lib '.'; #nuts, PERL has changed. add local path to @INC
 		require CGI;
   require CGI::Cookie;
-	 require core_vars; #load up common variables
+  require core_vars; #load up common variables
 		};
-if ($@) { &cgierr("fatal error: $@"); }     # never produces that nasty 500 server error page.
 warn $@ if $@;
 
 if ($@) {
