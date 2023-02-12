@@ -24,10 +24,10 @@ eval {
 		use strict;
 		use warnings;
 
-		use CGI;
-  use CGI::Cookie;
 		use lib '.'; #nuts, PERL has changed. add local path to @INC
-  use core_vars; #load up common variables
+		require CGI;
+  require CGI::Cookie;
+  require core_vars; #load up common variables
 		};
 warn $@ if $@;
 
