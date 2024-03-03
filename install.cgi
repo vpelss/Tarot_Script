@@ -97,7 +97,7 @@ Perl Version:$]
 Location of Perl:$perlloc[0]
 <p>
 
-<INPUT TYPE="TEXT" name="HTTP_HOST" Value="https://$ENV{HTTP_HOST}" size="40"> Server URL must be the base URL address with the preceding https:// eg: https://www.emogic.com
+<INPUT TYPE="TEXT" name="HTTP_HOST" Value="http://$ENV{HTTP_HOST}" size="40"> Server URL must be the base URL address with the preceding https:// eg: https://www.emogic.com
 <P>
 <INPUT TYPE="TEXT" name="SERVER_ADMIN" Value="$ENV{SERVER_ADMIN}" size="40"> Email Admin address that tarot readings will be sent from. <b>Must be in form of: youremail\\\@site.com</b> DO NOT FORGET THE \\
 <P>
