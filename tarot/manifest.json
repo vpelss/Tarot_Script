@@ -1,0 +1,29 @@
+{
+  "short_name": "ETarot",
+  "name": "Emogic Tarot",
+  "icons": [
+    {
+      "src": "./images/eye.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "id": "",
+  "start_url": "./",
+  "background_color": "#3367D6",
+  "display": "minimal-ui",
+  "scope": "/",
+  "theme_color": "#3367D6",
+  "description": "IMOK :  fail safe alert system",
+  "screenshots": [
+    {
+      "src": "./images/eye.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": [
+    "games"
+  ]
+}
