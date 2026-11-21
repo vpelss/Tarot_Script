@@ -72,11 +72,11 @@ $email_enabled = 1;
 
 $from = "Tarot Mailer EMAIL_ADDRESS";
 #This will be in all Email from addresses
-#example $from = "Tarot Mailer vpelss\@emogic.com";
+#example $from = "tarot\@emogic.com";
 #THE SLASH IS MANDITORY!
 #$from = "Tarot Mailer wampserver@wampserver.invalid";
 
-$subject = "Your Tarot Reading";
+$subject = "Tarot Reading";
 #email subject. Note: The script adds the visitors name will show at the end
 
 #set to 1 ONLY if you wish to delay emails sent.
